@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About PTL Atelier Ventures — The Architectural Journal</title>
+  <link rel="stylesheet" href="css/design-system.css">
+  <style>
+    /* About Page Custom Layout Adjustments and Editorial Overrides */
+    .about-hero-space {
+      position: relative;
+      min-height: 85vh;
+      display: flex;
+      align-items: flex-end;
+      padding-bottom: var(--space-huge);
+      background: linear-gradient(180deg, rgba(11, 27, 45, 0.5) 0%, rgba(11, 27, 45, 0.9) 100%),
+                  url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1800&q=90') no-repeat center center;
+      background-size: cover;
+      color: var(--color-pure-white);
+    }
+
+    [data-theme="dark"] .about-hero-space {
+      background: linear-gradient(180deg, rgba(7, 19, 33, 0.6) 0%, rgba(7, 19, 33, 0.98) 100%),
+                  url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1800&q=90') no-repeat center center;
+      background-size: cover;
+    }
+
+    .about-hero-content {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 var(--space-md);
+      z-index: 2;
+    }
+
+    @media (min-width: 768px) {
+      .about-hero-content {
+        padding: 0 var(--space-xl);
+      }
+    }
+
+    /* Asymmetric Journal Row styling */
+    .journal-row {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xl);
+    }
+
+    @media (min-width: 768px) {
+      .journal-row {
+        flex-direction: row;
+        align-items: flex-start;
+      }
+      .journal-col-sidebar {
+        flex: 1;
+        position: sticky;
+        top: 120px;
+      }
+      .journal-col-content {
+        flex: 2;
+      }
+    }
+
+    /* Pillar specific layout card */
+    .pillar-card {
+      border: 0.5px solid var(--border-color);
+      padding: var(--space-xl);
+      background-color: var(--panel-bg);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all var(--transition-medium);
+      position: relative;
+    }
+
+    .pillar-card:hover {
+      border-color: var(--accent-color);
+      transform: translateY(-4px);
+    }
+
+    .pillar-number {
+      font-family: var(--font-serif);
+      font-size: var(--fs-h1);
+      color: var(--accent-color);
+      line-height: 1;
+      margin-bottom: var(--space-md);
+    }
+
+    /* Team grid card overrides */
+    .team-editorial-card {
+      position: relative;
+      overflow: hidden;
+      margin-bottom: var(--space-xl);
+    }
+
+    .team-meta {
+      margin-top: var(--space-md);
+      border-left: 1px solid var(--accent-color);
+      padding-left: var(--space-md);
+    }
+
+    .trust-indicator-card {
+      border-top: 1px solid var(--border-color);
+      padding-top: var(--space-lg);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Bespoke Drafting Cursor Dot -->
+  <div class="drafting-dot" id="draftingDot"></div>
+
+  <!-- --- GLOBAL NAVIGATION ("QUIET FRAME") --- -->
+  <header class="quiet-header">
+    <div class="quiet-logo">
+      <a href="index.html">PTL ATELIER VENTURES</a>
+    </div>
+    <div class="quiet-coordinates">PH: 4.8156° N, 7.0498° E</div>
+    <div class="quiet-menu-btn" id="menuToggle">
+      <span>Menu</span>
+      <span class="quiet-menu-dot"></span>
+    </div>
+  </header>
+
+  <!-- Navigation Full-Screen Overlay -->
+  <div class="nav-overlay" id="navOverlay">
+    <div class="nav-overlay-close" id="menuClose">Close [X]</div>
+    <div class="nav-overlay-content">
+      <nav>
+        <ul class="nav-list">
+          <li class="nav-item">
+            <a href="index.html" class="nav-link" data-img="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80">
+              <span>01</span> The Atelier
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="about.html" class="nav-link" data-img="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80">
+              <span>02</span> About Journal
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="index.html#principles" class="nav-link" data-img="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=800&q=80">
+              <span>03</span> Principles
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="index.html#services" class="nav-link" data-img="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80">
+              <span>04</span> Services
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="index.html#portfolio" class="nav-link" data-img="https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?auto=format&fit=crop&w=800&q=80">
+              <span>05</span> Selected Works
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="index.html#process" class="nav-link" data-img="https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&w=800&q=80">
+              <span>06</span> Commissioning
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <!-- Cinematic blueprint preview window on hover -->
+      <div class="nav-preview-box">
+        <img src="" id="navPreviewImage" class="nav-preview-image" alt="Architectural Preview">
+      </div>
+    </div>
+  </div>
+
+  <main>
+
+    <!-- --- 1. HERO INTRODUCTION --- -->
+    <section class="about-hero-space">
+      <div class="about-hero-content">
+        <div class="blueprint-grid">
+          <div style="grid-column: span 4; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end;">
+            <span style="font-family: var(--font-sans); font-size: var(--fs-micro); letter-spacing: var(--tracking-wider); text-transform: uppercase; color: var(--accent-color); font-weight: 600; margin-bottom: var(--space-xs);">PORT HARCOURT // VOLUME 01 // COMPANY JOURNAL</span>
+            <h1 style="font-size: var(--fs-display); font-weight: 300; line-height: 1.1; margin-bottom: var(--space-md); color: #FFFFFF;">
+              The Restrained Search for Perfection
+            </h1>
+            <p style="color: rgba(255, 255, 255, 0.85); font-size: var(--fs-body); line-height: 1.6; margin-bottom: var(--space-xl); max-width: 500px;">
+              A record of structural honesty, multi-generational craftsmanship, and the premium raw elements defining PTL Atelier Ventures.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- --- 2. COMPANY STORY --- -->
+    <section class="section-container" style="background-color: var(--panel-bg);">
+      <div class="journal-row">
+        <div class="journal-col-sidebar">
+          <span style="font-family: var(--font-sans); font-size: var(--fs-micro); letter-spacing: var(--tracking-wider); text-transform: uppercase; color: var(--accent-color);">01 / CHRONICLES OF EXCELLENCE</span>
+          <h2 style="font-size: var(--fs-h1); margin-top: var(--space-xs); font-weight: 300; line-height: var(--lh-heading);">
+            Our Journey, Mission, and Spatial Vision
+          </h2>
+        </div>
+
+        <div class="journal-col-content">
+          <p style="font-family: var(--font-serif); font-size: var(--fs-h2); line-height: 1.4; color: var(--text-color); margin-bottom: var(--space-lg); font-style: italic; font-weight: 300;">
+            "We do not inherit a space; we construct its legacy. Real interior architecture stands as an uncompromising interface of geometry, physical honesty, and human spirit."
+          </p>
+
+          <p style="margin-bottom: var(--space-md); font-size: var(--fs-body); line-height: var(--lh-body); color: var(--text-muted);">
+            Founded in Port Harcourt, Nigeria, PTL Atelier Ventures emerged from a critical realization: the modern luxury interior design sector had substituted physical quality with temporary visual illusions. Where others deployed superficial laminates and rapid digital renderings, we chose to return to the weight of raw timber, massive masonry, and precise joinery.
+          </p>
+
+          <p style="margin-bottom: var(--space-md); font-size: var(--fs-body); line-height: var(--lh-body); color: var(--text-muted);">
+            Our mission is to safeguard and elevate the architectural legacy of West Africa's premium residences. Through deliberate structural restraint, we refine complex spatial challenges into serene, monumental realities that breathe with light, scale, and permanence.
+          </p>
+
+          <p style="font-size: var(--fs-body); line-height: var(--lh-body); color: var(--text-muted);">
+            By controlling every stage of execution—from direct Italian quarry inspections to the final micron-calibrations of custom solid hardwood millwork—we construct environments that do not merely look premium; they remain functionally flawless for generations.
+          </p>
+
+          <div class="hairline-divider" style="margin: var(--space-xl) 0;"></div>
+
+          <div class="blueprint-grid" style="row-gap: var(--space-md);">
+            <div style="grid-column: span 6;">
+              <h4 style="font-family: var(--font-sans); font-size: var(--fs-micro); letter-spacing: var(--tracking-wider); text-transform: uppercase; color: var(--accent-color); font-weight: 600;">THE MISSION</h4>
+              <p style="font-size: var(--fs-small); color: var(--text-muted); margin-top: var(--space-xs);">
+                To replace temporary decoration with permanent architectural interventions, establishing absolute physical alignment behind every wall.
+              </p>
+            </div>
+            <div style="grid-column: span 6;">
+              <h4 style="font-family: var(--font-sans); font-size: var(--fs-micro); letter-spacing: var(--tracking-wider); text-transform: uppercase; color: var(--accent-color); font-weight: 600;">THE VISION</h4>
+              <p style="font-size: var(--fs-small); color: var(--text-muted); margin-top: var(--space-xs);">
+                To serve as the definitive standard of unyielding craftsmanship in Nigeria, where client trust is locked before the physical site breaks earth.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- --- 3. THE FOUR PILLARS --- -->
+    <section class="section-container">
+      <div style="margin-bottom: var(--space-colossus);">
+        <span style="font-family: var(--font-sans); font-size: var(--fs-micro); letter-spacing: var(--tracking-wider); text-transform: uppercase; color: var(--accent-color);">02 / CORE DISCIPLINE CODE</span>
+        <h2 style="font-size: var(--fs-h1); margin-top: var(--space-xs); font-weight: 300;">
+          The Four Architectural Pillars
+        </h2>
+        <p style="margin-top: var(--space-md); font-size: var(--fs-body); max-width: 600px;">
+          Our practice is bound to four unyielding principles. They represent our technical methodology, material morality, and physical contract with every resident.
+        </p>
+      </div>
+
+      <div class="blueprint-grid">
+        <!-- Pillar I -->
+        <div style="grid-column: span 4;" class="pillar-card">
+          <div>
+            <div class="pillar-number">I.</div>
+            <h3 style="font-size: var(--fs-h3); font-weight: 400; margin-bottom: var(--space-sm);">Structural Integrity</h3>
+            <p style="font-size: var(--fs-small); color: var(--text-muted); line-height: 1.6;">
+              We refuse to mask weak foundations. Every wall partition, hidden framing member, and structural anchor is constructed with absolute physical transparency, ensuring absolute safety and unyielding performance.
+            </p>
+          </div>
+          <div class="image-container-3-4" style="margin-top: var(--space-lg);">
+            <img class="image-reveal" src="https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?auto=format&fit=crop&w=800&q=80" alt="Structural Integrity Drafting">
+            <div class="image-dimension-tag">PIL_01 // INTEGRITY</div>
+          </div>
+        </div>
+
+        <!-- Pillar II -->
+        <div style="grid-column: span 4;" class="pillar-card">
+          <div>
+            <div class="pillar-number">II.</div>
+            <h3 style="font-size: var(--fs-h3); font-weight: 400; margin-bottom: var(--space-sm);">Premium Materials</h3>
+            <p style="font-size: var(--fs-small); color: var(--text-muted); line-height: 1.6;">
+              Absolute material honesty. No composites, no artificial veneers, and no synthetic panels. We hand-select premium marble slabs, solid unlacquered brass, and true dense hardwoods directly from international quarries and forests.
+            </p>
+          </div>
+          <div class="image-container-3-4" style="margin-top: var(--space-lg);">
+            <img class="image-reveal" src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=800&q=80" alt="Premium Materials Sourcing">
+            <div class="image-dimension-tag">PIL_02 // MATERIALS</div>
+          </div>
+        </div>
+
+        <!-- Pillar III -->
+        <div style="grid-column: span 4;" class="pillar-card">
+          <div>
+            <div class="pillar-number">III.</div>
+            <h3 style="font-size: var(--fs-h3); font-weight: 400; margin-bottom: var(--space-sm);">Qualified Craftsmen</h3>
+            <p style="font-size: var(--fs-small); color: var(--text-muted); line-height: 1.6;">
+              Our works are sculpted by hands from elite multi-generational stone, plaster, and timber guilds. These master craftsmen work under calculated millimetric tolerances, treating joints as permanent architectural art.
+            </p>
+          </div>
+          <div class="image-container-3-4" style="margin-top: var(--space-lg);">
+            <img class="image-reveal" src="https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&w=800&q=80" alt="Guild Craftsman Precision">
+            <div class="image-dimension-tag">PIL_03 // CRAFTSMEN</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Out-of-grid full width accent block for Pillar IV to balance layout asymmetrically -->
+      <div class="blueprint-grid" style="margin-top: var(--space-lg);">
+        <div style="grid-column: span 12;" class="pillar-card">
+          <div class="blueprint-grid">
+            <div style="grid-column: span 4;">
+              <div class="pillar-number">IV.</div>
+              <h3 style="font-size: var(--fs-h2); font-weight: 300; margin-bottom: var(--space-sm);">Perpetual Client Satisfaction</h3>
+              <p style="font-size: var(--fs-body); color: var(--text-muted); line-height: 1.6;">
+                Client satisfaction is not a point-in-time handshake on completion day. It is an enduring legacy. Our residences are backed by perpetual structural inspections and a multi-year warranty, guaranteeing that joints expand and contract beautifully as the home breathes with climate seasons.
+              </p>
+            </div>
+            <div style="grid-column: span 8;">
+              <div class="image-container-3-4" style="aspect-ratio: 21 / 9;">
+                <img class="image-reveal" src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80" alt="Perpetual Handover Satisfaction">
+                <div class="image-dimension-tag">PIL_04 // SATISFACTION</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- --- 4. MEET THE TEAM --- -->
+    <section class="section-container" style="background-color: var(--panel-bg);">
+      <div class="journal-row" style="margin-bottom: var(--space-colossus);">
+        <div class="journal-col-sidebar">
+          <span style="font-family: var(--font-sans); font-size: var(--fs-micro); letter-spacing: var(--tracking-wider); text-transform: uppercase; color: var(--accent-color);">03 / THE ATELIER GUILD COUNCIL</span>
+          <h2 style="font-size: var(--fs-h1); margin-top: var(--space-xs); font-weight: 300; line-height: var(--lh-heading);">
+            Leaders & Master Craftsmen
+          </h2>
+        </div>
+        <div class="journal-col-content">
+          <p style="font-size: var(--fs-body); color: var(--text-muted); line-height: var(--lh-body);">
+            We reject corporate mugshots and standardized titles. Our leaders are hands-on, actively overseeing site tolerances and physical material selection. Meet the minds shaping PTL's architectural direction.
+          </p>
+        </div>
+      </div>
+
+      <div class="blueprint-grid">
+        <!-- Team Member 1 -->
+        <div style="grid-column: span 4;" class="team-editorial-card reveal-on-scroll">
+          <div class="image-container-3-4">
+            <img class="image-reveal" src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=800&q=80" alt="Principal UI/UX Architect">
+            <div class="image-dimension-tag">LEADERSHIP // PRINCIPAL</div>
+          </div>
+          <div class="team-meta">
+            <h3 style="font-size: var(--fs-h3); font-weight: 400; color: var(--text-color);">Tariq Al-Mansoor</h3>
+            <p style="font-family: var(--font-sans); font-size: var(--fs-micro); letter-spacing: var(--tracking-wider); text-transform: uppercase; color: var(--accent-color); font-weight: 600;">
+              Principal Interior Architect & Sourcing Director
+            </p>
+            <p style="font-size: var(--fs-small); color: var(--text-muted); margin-top: var(--space-xs);">
+              With over 18 years of technical design experience across London, Dubai, and Nigeria, Tariq oversees spatial geometry, quarry procurement, and PTL's absolute design alignment.
+            </p>
+          </div>
+        </div>
+
+        <!-- Team Member 2 -->
+        <div style="grid-column: span 4;" class="team-editorial-card reveal-on-scroll">
+          <div class="image-container-3-4">
+            <img class="image-reveal" src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=800&q=80" alt="Master Guild Carpenter">
+            <div class="image-dimension-tag">GUILD // MASTER JOINER</div>
+          </div>
+          <div class="team-meta">
+            <h3 style="font-size: var(--fs-h3); font-weight: 400; color: var(--text-color);">Ekemini N. Bassey</h3>
+            <p style="font-family: var(--font-sans); font-size: var(--fs-micro); letter-spacing: var(--tracking-wider); text-transform: uppercase; color: var(--accent-color); font-weight: 600;">
+              Chief of Wood Joinery & Cabinet Assemblies
+            </p>
+            <p style="font-size: var(--fs-small); color: var(--text-muted); margin-top: var(--space-xs);">
+              An elite third-generation master carpenter whose joints are built to stay flawless without glue dependency. Ekemini calculates timber contraction indexes with flawless precision.
+            </p>
+          </div>
+        </div>
+
+        <!-- Team Member 3 -->
+        <div style="grid-column: span 4;" class="team-editorial-card reveal-on-scroll">
+          <div class="image-container-3-4">
+            <img class="image-reveal" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80" alt="Material Sourcing Engineer">
+            <div class="image-dimension-tag">MATERIALS // CHIEF ENGINEER</div>
+          </div>
+          <div class="team-meta">
+            <h3 style="font-size: var(--fs-h3); font-weight: 400; color: var(--text-color);">Dr. Amina Yusuf</h3>
+            <p style="font-family: var(--font-sans); font-size: var(--fs-micro); letter-spacing: var(--tracking-wider); text-transform: uppercase; color: var(--accent-color); font-weight: 600;">
+              Materials Integrity Director
+            </p>
+            <p style="font-size: var(--fs-small); color: var(--text-muted); margin-top: var(--space-xs);">
+              Doctor of Material Engineering. Amina verifies the density coefficients, load limits, and composition structure of imported natural marbles and hard timber veneers.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- --- 5. CRAFTSMANSHIP PHILOSOPHY --- -->
+    <section class="section-container">
+      <div class="journal-row">
+        <div class="journal-col-sidebar">
+          <span style="font-family: var(--font-sans); font-size: var(--fs-micro); letter-spacing: var(--tracking-wider); text-transform: uppercase; color: var(--accent-color);">04 / TECHNICAL MORALITY</span>
+          <h2 style="font-size: var(--fs-h1); margin-top: var(--space-xs); font-weight: 300; line-height: var(--lh-heading);">
+            Commitment to Physical Restraint & Precision
+          </h2>
+        </div>
+
+        <div class="journal-col-content">
+          <p style="font-family: var(--font-serif); font-size: var(--fs-h2); line-height: 1.4; color: var(--text-color); margin-bottom: var(--space-lg); font-style: italic; font-weight: 300;">
+            "Decoration is a mask; craftsmanship is an exposure. Luxury does not emerge from adding gold foil, but from executing raw physical connections flawlessly."
+          </p>
+
+          <p style="margin-bottom: var(--space-md); font-size: var(--fs-body); line-height: var(--lh-body); color: var(--text-muted);">
+            In the philosophy of Roman and Williams and Yabu Pushelberg, luxury is derived from absolute restraint and raw material honesty. We embrace this standard completely. Our design guidelines prioritize spatial gravity and structural alignment. We analyze how shadows hit unpolished plaster corners, how wood grains reflect ambient evening light, and how heavy travertine floor slabs ground the human foot.
+          </p>
+
+          <p style="font-size: var(--fs-body); line-height: var(--lh-body); color: var(--text-muted);">
+            Our structural joints, hidden wall framing, and custom unlacquered brass connections are balanced meticulously to tolerate the tropical humidity of Port Harcourt. No artificial quick fixes, no hollow fiberboard composites, and no compromise on design integrity.
+          </p>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- --- 6. MATERIAL EXCELLENCE --- -->
+    <section class="section-container" style="background-color: var(--panel-bg);">
+      <div style="margin-bottom: var(--space-colossus);">
+        <span style="font-family: var(--font-sans); font-size: var(--fs-micro); letter-spacing: var(--tracking-wider); text-transform: uppercase; color: var(--accent-color);">05 / VERIFIABLE NATURAL TEXTURES</span>
+        <h2 style="font-size: var(--fs-h1); margin-top: var(--space-xs); font-weight: 300;">
+          The Natural Library of Travertine, Oak & Unlacquered Brass
+        </h2>
+      </div>
+
+      <div class="blueprint-grid">
+        <!-- Material 1 -->
+        <div style="grid-column: span 4;" class="reveal-on-scroll">
+          <div class="image-container-3-4">
+            <img class="image-reveal" src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=800&q=80" alt="Italian Travertine Quarry Slab">
+            <div class="image-dimension-tag">NATURAL_SLAB // ITALY</div>
+          </div>
+          <h4 style="font-size: var(--fs-h3); margin-top: var(--space-sm); font-style: italic;">Italian Travertine Slabs</h4>
+          <p style="font-size: var(--fs-small); color: var(--text-muted); margin-top: var(--space-xxs);">
+            Directly sourced and cut in massive, seamless pieces to reduce joints. Unfilled holes are preserved to reflect tactile material weight and structural history.
+          </p>
+        </div>
+
+        <!-- Material 2 -->
+        <div style="grid-column: span 4;" class="reveal-on-scroll">
+          <div class="image-container-3-4">
+            <img class="image-reveal" src="https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&w=800&q=80" alt="Smoked European Oak Panels">
+            <div class="image-dimension-tag">HARDWOOD // CENTRAL EUROPE</div>
+          </div>
+          <h4 style="font-size: var(--fs-h3); margin-top: var(--space-sm); font-style: italic;">Bookmatched Smoked Oak</h4>
+          <p style="font-size: var(--fs-small); color: var(--text-muted); margin-top: var(--space-xxs);">
+            Selected and matched grain-by-grain. Our veneers are backed by solid hardwood framework to prevent warping or climate expansion splits.
+          </p>
+        </div>
+
+        <!-- Material 3 -->
+        <div style="grid-column: span 4;" class="reveal-on-scroll">
+          <div class="image-container-3-4">
+            <img class="image-reveal" src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=800&q=80" alt="Raw Unlacquered Brass Detailing">
+            <div class="image-dimension-tag">ALLOY // HAND-BRUSHED</div>
+          </div>
+          <h4 style="font-size: var(--fs-h3); margin-top: var(--space-sm); font-style: italic;">Unlacquered Organic Brass</h4>
+          <p style="font-size: var(--fs-small); color: var(--text-muted); margin-top: var(--space-xxs);">
+            Chemically unsealed to encourage gradual, beautiful oxidation. Our brass hardware patinas naturally based on the atmosphere and touches of the hand.
+          </p>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- --- 7. WHY CLIENTS TRUST PTL --- -->
+    <section class="section-container">
+      <div style="margin-bottom: var(--space-colossus);">
+        <span style="font-family: var(--font-sans); font-size: var(--fs-micro); letter-spacing: var(--tracking-wider); text-transform: uppercase; color: var(--accent-color);">06 / THE TRUTH OF HANDOVER</span>
+        <h2 style="font-size: var(--fs-h1); margin-top: var(--space-xs); font-weight: 300;">
+          Understanding Integrity Before Contact
+        </h2>
+        <p style="margin-top: var(--space-md); font-size: var(--fs-body); max-width: 600px;">
+          Most clients only appreciate PTL's level of execution after spending years inside their residences. We designed our onboarding strategy to give you that confidence today.
+        </p>
+      </div>
+
+      <div class="blueprint-grid">
+        <!-- Trust Point 1 -->
+        <div style="grid-column: span 4;" class="trust-indicator-card">
+          <span style="font-family: var(--font-serif); font-size: var(--fs-h2); color: var(--accent-color); font-weight: 300;">Physical Sample Ledger</span>
+          <p style="font-size: var(--fs-small); color: var(--text-muted); margin-top: var(--space-sm); line-height: 1.6;">
+            We do not ask for signatures on digital renders. You will physically hold the real oak veneers, unlacquered brass tabs, and custom plaster finishes designated for your layout, verifying sensory alignment before break of site.
+          </p>
+        </div>
+
+        <!-- Trust Point 2 -->
+        <div style="grid-column: span 4;" class="trust-indicator-card">
+          <span style="font-family: var(--font-serif); font-size: var(--fs-h2); color: var(--accent-color); font-weight: 300;">142-Point Construction Audit</span>
+          <p style="font-size: var(--fs-small); color: var(--text-muted); margin-top: var(--space-sm); line-height: 1.6;">
+            We publish every engineering tolerance and structural coordinate. We audit alignment depth, timber moisture ratios, and plaster density, making our technical integrity open to independent surveyor verification.
+          </p>
+        </div>
+
+        <!-- Trust Point 3 -->
+        <div style="grid-column: span 4;" class="trust-indicator-card">
+          <span style="font-family: var(--font-serif); font-size: var(--fs-h2); color: var(--accent-color); font-weight: 300;">Perpetual Material Index</span>
+          <p style="font-size: var(--fs-small); color: var(--text-muted); margin-top: var(--space-sm); line-height: 1.6;">
+            Every single stone cut, wood veneer roll, and structural metal panel used on your residence is logged permanently in our private archive. This guarantees perfect matching material source replacements decades later.
+          </p>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- --- 8. CLOSING SECTION --- -->
+    <section class="section-container" style="background-color: var(--color-primary-blue); color: var(--color-pure-white); border-bottom-color: rgba(255,255,255,0.12);">
+      <div class="blueprint-grid">
+        <div style="grid-column: span 8; display: flex; flex-direction: column; justify-content: center; margin-bottom: var(--space-xl);">
+          <span style="font-family: var(--font-sans); font-size: var(--fs-micro); letter-spacing: var(--tracking-wider); text-transform: uppercase; color: var(--accent-color); font-weight: 600;">THE ATELIER MANIFESTO</span>
+          <h2 style="font-size: var(--fs-display); margin-top: var(--space-xs); color: #FFFFFF; font-weight: 300;">
+            Initiate Your Spatial Legacy.
+          </h2>
+          <p style="color: #A3B3C8; margin-top: var(--space-md); font-size: var(--fs-body); line-height: 1.7; max-width: 600px;">
+            Whether commission spatial programming, curating premium European oaks, or designing a bespoke turnkey residence, PTL Atelier Ventures conducts every project with unparalleled guild precision.
+          </p>
+          <div style="display: flex; flex-wrap: wrap; gap: var(--space-md); margin-top: var(--space-xl);">
+            <a href="index.html#commission" class="btn btn-primary" style="background-color: var(--color-gold-brushed); border-color: var(--color-gold-brushed); color: var(--color-primary-blue);">Request Commission Registration</a>
+            <a href="index.html#services" class="btn btn-secondary" style="color: #FFFFFF; border-color: rgba(255, 255, 255, 0.4);">Review Core Disciplines</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- --- GLOBAL FOOTER --- -->
+  <footer class="atelier-footer">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <h4>PTL ATELIER VENTURES</h4>
+        <p>
+          World-class interior architecture & custom material commissioning based in Port Harcourt, Nigeria. Committed to Integrity, Premium Sourcing, and Unyielding Craft.
+        </p>
+      </div>
+
+      <div>
+        <h5 class="footer-column-title">COMMISSIONS</h5>
+        <ul class="footer-links">
+          <li><a href="index.html">The Atelier</a></li>
+          <li><a href="about.html">About Journal</a></li>
+          <li><a href="index.html#principles">Foundational Principles</a></li>
+          <li><a href="index.html#services">Core Disciplines</a></li>
+          <li><a href="index.html#portfolio">Finished Works</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h5 class="footer-column-title">ATELIER COORDINATES</h5>
+        <ul class="footer-links" style="font-family: var(--font-sans); font-size: var(--fs-small); color: #A3B3C8; line-height: 1.8;">
+          <li>4.8156° N, 7.0498° E</li>
+          <li>Phase II, GRA Estate</li>
+          <li>Port Harcourt, Nigeria</li>
+          <li><a href="mailto:commissions@ptlatelier.com" style="color: var(--color-gold-brushed); text-decoration: underline;">commissions@ptlatelier.com</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-copy">
+        &copy; 2025 PTL ATELIER VENTURES. HANDCRAFTED IN NIGERIA. ALL CREATIVE RIGHTS RESERVED.
+      </div>
+      <div style="font-family: var(--font-sans); font-size: var(--fs-micro); color: rgba(255, 255, 255, 0.4); text-transform: uppercase; letter-spacing: var(--tracking-wide);">
+        DESIGN BY LUMINA FORGE
+      </div>
+    </div>
+  </footer>
+
+  <!-- Theme Toggle Floating Button -->
+  <div class="theme-toggle-fixed" id="themeToggle" title="Toggle Blueprint Theme">
+    <span id="themeIcon" style="font-size: 20px;">◑</span>
+  </div>
+
+  <script src="js/design-system.js"></script>
+</body>
+</html>
