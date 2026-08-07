@@ -3,17 +3,139 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PTL Atelier Ventures — Design Foundation Showcase</title>
+  <title>PTL Atelier Ventures — Premium Architectural Interiors</title>
   <link rel="stylesheet" href="css/design-system.css">
+  <style>
+    /* Homepage Custom Overrides and Polishing Layout Styles */
+    .hero-space {
+      position: relative;
+      min-height: 95vh;
+      display: flex;
+      align-items: flex-end;
+      padding-bottom: var(--space-huge);
+      background: linear-gradient(180deg, rgba(11, 27, 45, 0.4) 0%, rgba(11, 27, 45, 0.85) 100%),
+                  url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1800&q=90') no-repeat center center;
+      background-size: cover;
+      color: var(--color-pure-white);
+    }
+
+    [data-theme="dark"] .hero-space {
+      background: linear-gradient(180deg, rgba(7, 19, 33, 0.5) 0%, rgba(7, 19, 33, 0.95) 100%),
+                  url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1800&q=90') no-repeat center center;
+      background-size: cover;
+    }
+
+    .hero-content {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 var(--space-md);
+      z-index: 2;
+    }
+
+    @media (min-width: 768px) {
+      .hero-content {
+        padding: 0 var(--space-xl);
+      }
+    }
+
+    .trust-intro-card {
+      border-left: 1px solid var(--accent-color);
+      padding-left: var(--space-lg);
+      margin-top: var(--space-md);
+    }
+
+    .services-nav-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+    }
+
+    .services-nav-item {
+      border-bottom: 0.5px solid var(--border-color);
+      padding-bottom: var(--space-md);
+      cursor: pointer;
+      transition: border-color var(--transition-fast);
+    }
+
+    .services-nav-item:hover {
+      border-bottom-color: var(--accent-color);
+    }
+
+    .step-number {
+      font-family: var(--font-sans);
+      font-size: var(--fs-micro);
+      letter-spacing: var(--tracking-wider);
+      color: var(--accent-color);
+      font-weight: 600;
+      display: block;
+      margin-bottom: var(--space-xs);
+    }
+
+    .testimonial-quote {
+      font-family: var(--font-serif);
+      font-size: var(--fs-h2);
+      font-style: italic;
+      line-height: var(--lh-heading);
+      margin-bottom: var(--space-md);
+      position: relative;
+    }
+
+    .testimonial-quote::before {
+      content: "“";
+      position: absolute;
+      top: -20px;
+      left: -20px;
+      font-size: 5rem;
+      color: var(--border-color);
+      font-family: var(--font-serif);
+      opacity: 0.3;
+    }
+
+    .scroller-indicator {
+      position: absolute;
+      bottom: var(--space-lg);
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: var(--font-sans);
+      font-size: var(--fs-micro);
+      letter-spacing: var(--tracking-wider);
+      text-transform: uppercase;
+      opacity: 0.8;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-xs);
+    }
+
+    .scroller-indicator::after {
+      content: "";
+      width: 1px;
+      height: 30px;
+      background-color: var(--color-gold-brushed);
+      display: block;
+      animation: scrollerLine 2s infinite var(--ease-atelier);
+    }
+
+    @keyframes scrollerLine {
+      0% { transform: scaleY(0); transform-origin: top; }
+      50% { transform: scaleY(1); transform-origin: top; }
+      51% { transform: scaleY(1); transform-origin: bottom; }
+      100% { transform: scaleY(0); transform-origin: bottom; }
+    }
+  </style>
 </head>
 <body>
 
   <!-- Bespoke Drafting Cursor Dot -->
   <div class="drafting-dot" id="draftingDot"></div>
 
-  <!-- --- NAVIGATION COMPONENT ("QUIET FRAME") --- -->
+  <!-- --- 1. GLOBAL NAVIGATION ("QUIET FRAME") --- -->
   <header class="quiet-header">
-    <div class="quiet-logo">PTL ATELIER VENTURES</div>
+    <div class="quiet-logo">
+      <a href="#">PTL ATELIER VENTURES</a>
+    </div>
     <div class="quiet-coordinates">PH: 4.8156° N, 7.0498° E</div>
     <div class="quiet-menu-btn" id="menuToggle">
       <span>Menu</span>
@@ -28,28 +150,28 @@
       <nav>
         <ul class="nav-list">
           <li class="nav-item">
-            <a href="#about" class="nav-link" data-img="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80">
-              <span>01</span> Atelier
+            <a href="#atelier" class="nav-link" data-img="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80">
+              <span>01</span> The Atelier
             </a>
           </li>
           <li class="nav-item">
-            <a href="#materials" class="nav-link" data-img="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=800&q=80">
-              <span>02</span> Materials
+            <a href="#principles" class="nav-link" data-img="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=800&q=80">
+              <span>02</span> Principles
             </a>
           </li>
           <li class="nav-item">
-            <a href="#portfolio" class="nav-link" data-img="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80">
-              <span>03</span> Portfolio
+            <a href="#services" class="nav-link" data-img="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80">
+              <span>03</span> Services
             </a>
           </li>
           <li class="nav-item">
-            <a href="#process" class="nav-link" data-img="https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?auto=format&fit=crop&w=800&q=80">
-              <span>04</span> Process
+            <a href="#portfolio" class="nav-link" data-img="https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?auto=format&fit=crop&w=800&q=80">
+              <span>04</span> Selected Works
             </a>
           </li>
           <li class="nav-item">
-            <a href="#connect" class="nav-link" data-img="https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&w=800&q=80">
-              <span>05</span> Connect
+            <a href="#process" class="nav-link" data-img="https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&w=800&q=80">
+              <span>05</span> Commissioning
             </a>
           </li>
         </ul>
@@ -61,189 +183,350 @@
     </div>
   </div>
 
-  <!-- Main Showcase Container -->
-  <main style="margin-top: 80px;">
+  <main>
 
-    <!-- SECTION 1: HERO TITLE & MISSION -->
-    <section class="section-container">
+    <!-- --- 2. HERO SECTION --- -->
+    <section class="hero-space" id="atelier">
+      <div class="hero-content">
+        <div class="blueprint-grid">
+          <div style="grid-column: span 4; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end;">
+            <span style="font-family: var(--font-sans); font-size: var(--fs-micro); letter-spacing: var(--tracking-wider); text-transform: uppercase; color: var(--accent-color); font-weight: 600; margin-bottom: var(--space-xs);">PORT HARCOURT, NIGERIA // SPACIAL ARCHITECTURE</span>
+            <h1 style="font-size: var(--fs-display); font-weight: 300; line-height: 1.1; margin-bottom: var(--space-md); color: #FFFFFF;">
+              Crafting Absolute Physical Legacies
+            </h1>
+            <p style="color: rgba(255, 255, 255, 0.85); font-size: var(--fs-body); line-height: 1.6; margin-bottom: var(--space-xl); max-width: 500px;">
+              PTL Atelier Ventures synthesizes structural honesty, raw material purity, and uncompromising technical detail. We do not decorate rooms; we commission permanent environments.
+            </p>
+            <div style="display: flex; flex-wrap: wrap; gap: var(--space-md);">
+              <a href="#commission" class="btn btn-primary" style="background-color: var(--color-gold-brushed); border-color: var(--color-gold-brushed); color: var(--color-primary-blue);">Initiate Commission</a>
+              <a href="#portfolio" class="btn btn-secondary" style="color: #FFFFFF; border-color: rgba(255, 255, 255, 0.4);">Review Finished Portfolios</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="scroller-indicator">
+        <span>Drafting Coordinates</span>
+      </div>
+    </section>
+
+
+    <!-- --- 3. TRUST INTRODUCTION --- -->
+    <section class="section-container" id="principles" style="background-color: var(--panel-bg);">
       <div class="blueprint-grid">
         <div style="grid-column: span 4; margin-bottom: var(--space-xl);">
-          <span style="font-family: var(--font-sans); font-size: var(--fs-micro); letter-spacing: var(--tracking-wider); text-transform: uppercase; color: var(--accent-color); font-weight: 600;">PTL ATELIER SYSTEM v1.0</span>
-          <h1 style="font-size: var(--fs-display); margin-top: var(--space-xs); font-weight: 300;">
-            The Living Design System & Architectural Foundation
-          </h1>
+          <span style="font-family: var(--font-sans); font-size: var(--fs-micro); letter-spacing: var(--tracking-wider); text-transform: uppercase; color: var(--accent-color);">01 / FOUNDATION PRINCIPLES</span>
+          <h2 style="font-size: var(--fs-h1); margin-top: var(--space-xs); font-weight: 300;">
+            The Anatomy of Absolute Trust
+          </h2>
           <p style="margin-top: var(--space-md); font-size: var(--fs-body);">
-            This system bridges sensory precision, unyielding materials, and absolute structural integrity. Engineered mobile-first, it represents luxury through deliberate restraint.
+            Most luxury interior design studios hide behind digital renderings and soft lighting. At PTL Atelier Ventures, we ground our client relationships in verifiable, structural truths long before the first marble joint is custom-cut.
           </p>
+        </div>
+
+        <div style="grid-column: span 8;">
+          <div class="blueprint-grid">
+            <div style="grid-column: span 4;" class="trust-intro-card">
+              <span class="step-number">I. INTEGRITY</span>
+              <h3 style="font-size: var(--fs-h3); margin-bottom: var(--space-xs);">Immutable Alignment</h3>
+              <p style="font-size: var(--fs-small);">
+                Our blueprints represent an unyielding promise. We reject rapid, cheap shortcuts in favor of structural density, guaranteeing that behind every finished wall sits absolute physical honesty.
+              </p>
+            </div>
+
+            <div style="grid-column: span 4;" class="trust-intro-card">
+              <span class="step-number">II. PREMIUM MATERIALS</span>
+              <h3 style="font-size: var(--fs-h3); margin-bottom: var(--space-xs);">Verifiable Earth & Slabs</h3>
+              <p style="font-size: var(--fs-small);">
+                No artificial composites. We source only true raw materials—solid European oak veneers, heavy hand-selected unlacquered brass, and real slabs of travertine directly from Italian quarries.
+              </p>
+            </div>
+
+            <div style="grid-column: span 4;" class="trust-intro-card">
+              <span class="step-number">III. QUALIFIED CRAFTSMEN</span>
+              <h3 style="font-size: var(--fs-h3); margin-bottom: var(--space-xs);">The Guild Council</h3>
+              <p style="font-size: var(--fs-small);">
+                Every detail is carved by hands representing multi-generational woodworking and stone guilds. Our execution tolerances are calculated in micrometers, not centimeters.
+              </p>
+            </div>
+
+            <div style="grid-column: span 4;" class="trust-intro-card">
+              <span class="step-number">IV. CUSTOMER SATISFACTION</span>
+              <h3 style="font-size: var(--fs-h3); margin-bottom: var(--space-xs);">Permanent Affiliation</h3>
+              <p style="font-size: var(--fs-small);">
+                Satisfaction is not measured on handover day. It is measured when the wood joints expand and contract beautifully decade after decade. Our commissions carry a perpetual craft warranty.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- SECTION 2: PALETTE SYSTEM -->
-    <section class="section-container" id="palette">
+
+    <!-- --- 4. FEATURED SERVICES PREVIEW --- -->
+    <section class="section-container" id="services">
+      <div class="blueprint-grid">
+        <div style="grid-column: span 4; margin-bottom: var(--space-xl);">
+          <span style="font-family: var(--font-sans); font-size: var(--fs-micro); letter-spacing: var(--tracking-wider); text-transform: uppercase; color: var(--accent-color);">02 / CORE DISCIPLINES</span>
+          <h2 style="font-size: var(--fs-h1); margin-top: var(--space-xs);">Architectural Interventions</h2>
+          <p style="margin-top: var(--space-md); font-size: var(--fs-body);">
+            We intervene at the physical interface of space and structure. Our disciplines reflect rigorous spatial methodologies.
+          </p>
+          <div class="hairline-divider" style="margin-top: var(--space-xl);"></div>
+          <a href="#commission" class="btn btn-secondary">Request Services Overview Booklet</a>
+        </div>
+
+        <div style="grid-column: span 8;">
+          <ul class="services-nav-list">
+            <li class="services-nav-item">
+              <div class="blueprint-grid">
+                <span style="grid-column: span 1; font-family: var(--font-serif); font-style: italic; font-size: var(--fs-h2); color: var(--accent-color);">01</span>
+                <div style="grid-column: span 11;">
+                  <h3 style="font-size: var(--fs-h2); font-weight: 400; margin-bottom: var(--space-xs);">Spatial Programming & Masonry Architecture</h3>
+                  <p style="font-size: var(--fs-small);">
+                    Master planning the flow, ceiling contours, and load alignments of luxury residences. Crafting massive spatial frameworks that direct light and shadow elegantly.
+                  </p>
+                </div>
+              </div>
+            </li>
+
+            <li class="services-nav-item">
+              <div class="blueprint-grid">
+                <span style="grid-column: span 1; font-family: var(--font-serif); font-style: italic; font-size: var(--fs-h2); color: var(--accent-color);">02</span>
+                <div style="grid-column: span 11;">
+                  <h3 style="font-size: var(--fs-h2); font-weight: 400; margin-bottom: var(--space-xs);">Bespoke Millwork, Joinery & Metal Assemblies</h3>
+                  <p style="font-size: var(--fs-small);">
+                    Engineering and constructing seamless, built-in custom wardrobes, libraries, and architectural paneling using precision hidden joints and unyielding solid hardwoods.
+                  </p>
+                </div>
+              </div>
+            </li>
+
+            <li class="services-nav-item">
+              <div class="blueprint-grid">
+                <span style="grid-column: span 1; font-family: var(--font-serif); font-style: italic; font-size: var(--fs-h2); color: var(--accent-color);">03</span>
+                <div style="grid-column: span 11;">
+                  <h3 style="font-size: var(--fs-h2); font-weight: 400; margin-bottom: var(--space-xs);">Curated Materials Sourcing & Slabs Procurement</h3>
+                  <p style="font-size: var(--fs-small);">
+                    Direct access to the world's most exclusive natural quarries and wood mills. Hand-inspecting structural veins, density coefficients, and grain paths prior to custom import.
+                  </p>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- --- 5. WHY PTL (TRUST STRATEGY) --- -->
+    <section class="section-container" style="background-color: var(--color-primary-blue); color: var(--color-pure-white); border-bottom-color: rgba(255,255,255,0.12);">
+      <div class="blueprint-grid">
+        <div style="grid-column: span 6; display: flex; flex-direction: column; justify-content: center; margin-bottom: var(--space-xl);">
+          <span style="font-family: var(--font-sans); font-size: var(--fs-micro); letter-spacing: var(--tracking-wider); text-transform: uppercase; color: var(--accent-color); font-weight: 600;">03 / DESIGN FAITH & ASSURANCE</span>
+          <h2 style="font-size: var(--fs-display); margin-top: var(--space-xs); color: #FFFFFF; font-weight: 300;">
+            Trust Before Contact, Excellence in Handover.
+          </h2>
+          <p style="color: #A3B3C8; margin-top: var(--space-md); font-size: var(--fs-body); line-height: 1.7;">
+            The tragedy of fine craftsmanship is that its true value is often invisible until after years of living inside a space. We have engineered our client journey to eliminate this hesitation.
+          </p>
+          <p style="color: #A3B3C8; margin-top: var(--space-sm); font-size: var(--fs-body); line-height: 1.7;">
+            By deploying full physical scale-drawings, real-slab physical material mockups, and transparent technical audits before any contractual signature, you experience the absolute integrity of PTL before we ever break earth on site.
+          </p>
+        </div>
+
+        <div style="grid-column: span 6;">
+          <div class="blueprint-grid" style="row-gap: var(--space-lg);">
+            <div style="grid-column: span 6; border-top: 0.5px solid rgba(255, 255, 255, 0.2); padding-top: var(--space-md);">
+              <span style="font-family: var(--font-serif); font-size: var(--fs-h1); color: var(--accent-color);">0%</span>
+              <h4 style="font-size: var(--fs-h3); color: #FFFFFF; margin-top: var(--space-xxs); margin-bottom: var(--space-xs);">Render-Deception Tolerance</h4>
+              <p style="font-size: var(--fs-small); color: #A3B3C8;">
+                We reject soft CGI illusions. What we mock up with real materials is exactly what is anchored permanently in your spatial architecture.
+              </p>
+            </div>
+
+            <div style="grid-column: span 6; border-top: 0.5px solid rgba(255, 255, 255, 0.2); padding-top: var(--space-md);">
+              <span style="font-family: var(--font-serif); font-size: var(--fs-h1); color: var(--accent-color);">142-Point</span>
+              <h4 style="font-size: var(--fs-h3); color: #FFFFFF; margin-top: var(--space-xxs); margin-bottom: var(--space-xs);">Structural Site Audit</h4>
+              <p style="font-size: var(--fs-small); color: #A3B3C8;">
+                Every partition wall, stone corner, and concealed wire conduit is benchmarked against strict structural standards prior to surface sealing.
+              </p>
+            </div>
+
+            <div style="grid-column: span 6; border-top: 0.5px solid rgba(255, 255, 255, 0.2); padding-top: var(--space-md);">
+              <span style="font-family: var(--font-serif); font-size: var(--fs-h1); color: var(--accent-color);">Perpetual</span>
+              <h4 style="font-size: var(--fs-h3); color: #FFFFFF; margin-top: var(--space-xxs); margin-bottom: var(--space-xs);">Physical Ledger Tracking</h4>
+              <p style="font-size: var(--fs-small); color: #A3B3C8;">
+                Your project specs are documented in an archive of custom drawings and material sources, allowing perfect material replacements in perpetuity.
+              </p>
+            </div>
+
+            <div style="grid-column: span 6; border-top: 0.5px solid rgba(255, 255, 255, 0.2); padding-top: var(--space-md);">
+              <span style="font-family: var(--font-serif); font-size: var(--fs-h1); color: var(--accent-color);">10-Year</span>
+              <h4 style="font-size: var(--fs-h3); color: #FFFFFF; margin-top: var(--space-xxs); margin-bottom: var(--space-xs);">Joint & Craft Warranty</h4>
+              <p style="font-size: var(--fs-small); color: #A3B3C8;">
+                We return to the residence at structural intervals to adjust custom-fit millwork, validating long-term behavior of premium timbers.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- --- 6. SELECTED PORTFOLIO PREVIEW --- -->
+    <section class="section-container" id="portfolio">
       <div style="margin-bottom: var(--space-xl);">
-        <span style="font-family: var(--font-sans); font-size: var(--fs-micro); letter-spacing: var(--tracking-wider); text-transform: uppercase; color: var(--accent-color);">01 / COLOUR SYSTEM</span>
-        <h2 style="font-size: var(--fs-h1); margin-top: var(--space-xs);">Structural Tone & Material Palette</h2>
+        <span style="font-family: var(--font-sans); font-size: var(--fs-micro); letter-spacing: var(--tracking-wider); text-transform: uppercase; color: var(--accent-color);">04 / SELECTED WORKS</span>
+        <h2 style="font-size: var(--fs-h1); margin-top: var(--space-xs);">Spatial Monoliths & Portfolios</h2>
       </div>
 
       <div class="blueprint-grid">
-        <!-- Card 1 -->
-        <div class="color-token-card" style="grid-column: span 2;">
-          <div class="color-token-preview" style="background-color: var(--color-primary-blue);"></div>
-          <div>
-            <h3 style="font-size: var(--fs-h3); margin-top: var(--space-xs);">Deep Architectural Blue</h3>
-            <p style="font-size: var(--fs-small); margin-top: var(--space-xxs);">#0B1B2D | Blueprints & Twilight. Establishes unyielding authority, intellectual depth, and permanent trust.</p>
-          </div>
-        </div>
-
-        <!-- Card 2 -->
-        <div class="color-token-card" style="grid-column: span 2;">
-          <div class="color-token-preview" style="background-color: var(--color-pure-white); border: 0.5px solid var(--border-color);"></div>
-          <div>
-            <h3 style="font-size: var(--fs-h3); margin-top: var(--space-xs);">Pure White</h3>
-            <p style="font-size: var(--fs-small); margin-top: var(--space-xxs);">#FFFFFF | Plaster Canvas. The material negative space that invites natural shadow play.</p>
-          </div>
-        </div>
-
-        <!-- Card 3 -->
-        <div class="color-token-card" style="grid-column: span 2;">
-          <div class="color-token-preview" style="background-color: var(--color-gold-brushed);"></div>
-          <div>
-            <h3 style="font-size: var(--fs-h3); margin-top: var(--space-xs);">Soft Brushed Gold</h3>
-            <p style="font-size: var(--fs-small); margin-top: var(--space-xxs);">#C5A880 | Unlacquered Brass. Represents precision craftsmanship and structural joints.</p>
-          </div>
-        </div>
-
-        <!-- Card 4 -->
-        <div class="color-token-card" style="grid-column: span 2;">
-          <div class="color-token-preview" style="background-color: var(--color-rich-charcoal);"></div>
-          <div>
-            <h3 style="font-size: var(--fs-h3); margin-top: var(--space-xs);">Rich Charcoal</h3>
-            <p style="font-size: var(--fs-small); margin-top: var(--space-xxs);">#1E1E1E | Graphite Slate. Tactile pencil strokes representing master planning & design truth.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SECTION 3: TYPOGRAPHY SYSTEM -->
-    <section class="section-container" id="typography">
-      <div style="margin-bottom: var(--space-xl);">
-        <span style="font-family: var(--font-sans); font-size: var(--fs-micro); letter-spacing: var(--tracking-wider); text-transform: uppercase; color: var(--accent-color);">02 / TYPOGRAPHY TOKENS</span>
-        <h2 style="font-size: var(--fs-h1); margin-top: var(--space-xs);">Editorial Weight & Structural Readability</h2>
-      </div>
-
-      <div class="blueprint-grid">
-        <div style="grid-column: span 4;">
-          <span style="font-family: var(--font-sans); font-size: var(--fs-micro); letter-spacing: var(--tracking-wider); text-transform: uppercase; color: var(--accent-color); font-weight: 600;">PRIMARY DISPLAY SERIF (CORMORANT GARAMOND)</span>
-          <p style="font-family: var(--font-serif); font-size: var(--fs-display); line-height: 1.1; margin-top: var(--space-sm); color: var(--text-color);">
-            Where integrity and premium materials become a <i>permanent physical legacy</i>.
-          </p>
-          <div class="hairline-divider"></div>
-        </div>
-
-        <div style="grid-column: span 4;">
-          <span style="font-family: var(--font-sans); font-size: var(--fs-micro); letter-spacing: var(--tracking-wider); text-transform: uppercase; color: var(--accent-color); font-weight: 600;">SECONDARY TECHNICAL SANS (INTER / NEUE HAAS)</span>
-          <h3 style="font-family: var(--font-sans); font-size: var(--fs-h2); font-weight: 400; line-height: 1.2; margin-top: var(--space-sm); color: var(--text-color);">
-            PTL.ATELIER.VENTURES_SPEC_PH_4.8
-          </h3>
-          <p style="font-family: var(--font-sans); font-size: var(--fs-body); line-height: 1.6; margin-top: var(--space-md);">
-            This represents raw, unvarnished blueprint technicality. Inter has high geometric precision, giving technical readouts a clean structural weight. Used for components, specifications, timelines, buttons, and system settings.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- SECTION 4: REUSABLE BUTTON COMPONENT VARIANTS -->
-    <section class="section-container" id="buttons">
-      <div style="margin-bottom: var(--space-xl);">
-        <span style="font-family: var(--font-sans); font-size: var(--fs-micro); letter-spacing: var(--tracking-wider); text-transform: uppercase; color: var(--accent-color);">03 / BUTTON VARIANTS</span>
-        <h2 style="font-size: var(--fs-h1); margin-top: var(--space-xs);">Tactile Touch-Target Systems</h2>
-      </div>
-
-      <div style="display: flex; flex-wrap: wrap; gap: var(--space-lg); align-items: center;">
-        <div>
-          <span style="display: block; font-size: var(--fs-micro); color: var(--text-muted); margin-bottom: var(--space-xs); text-transform: uppercase; letter-spacing: var(--tracking-wide);">Primary Block</span>
-          <button class="btn btn-primary">Commission Atelier</button>
-        </div>
-
-        <div>
-          <span style="display: block; font-size: var(--fs-micro); color: var(--text-muted); margin-bottom: var(--space-xs); text-transform: uppercase; letter-spacing: var(--tracking-wide);">Secondary Outline</span>
-          <button class="btn btn-secondary">Explore Materials</button>
-        </div>
-
-        <div>
-          <span style="display: block; font-size: var(--fs-micro); color: var(--text-muted); margin-bottom: var(--space-xs); text-transform: uppercase; letter-spacing: var(--tracking-wide);">Brushed Gold Accent</span>
-          <button class="btn btn-accent">Review Process</button>
-        </div>
-
-        <div>
-          <span style="display: block; font-size: var(--fs-micro); color: var(--text-muted); margin-bottom: var(--space-xs); text-transform: uppercase; letter-spacing: var(--tracking-wide);">Minimal Link with Dot</span>
-          <button class="btn btn-text">Sourcing Ethics</button>
-        </div>
-      </div>
-    </section>
-
-    <!-- SECTION 5: GRID CARDS & IMAGES -->
-    <section class="section-container" id="cards">
-      <div style="margin-bottom: var(--space-xl);">
-        <span style="font-family: var(--font-sans); font-size: var(--fs-micro); letter-spacing: var(--tracking-wider); text-transform: uppercase; color: var(--accent-color);">04 / REUSABLE CARDS & IMAGES</span>
-        <h2 style="font-size: var(--fs-h1); margin-top: var(--space-xs);">Anatomy of Material Curation</h2>
-      </div>
-
-      <div class="blueprint-grid">
-        <!-- Reusable Card Variant -->
-        <div class="card-blueprint" data-id="01" style="grid-column: span 4;">
-          <div>
-            <span style="font-family: var(--font-sans); font-size: var(--fs-micro); letter-spacing: var(--tracking-wider); text-transform: uppercase; color: var(--text-muted);">Sourcing System</span>
-            <h3 style="font-size: var(--fs-h2); margin-top: var(--space-xs); margin-bottom: var(--space-sm);">Calacatta Oro Marble</h3>
-            <p style="font-size: var(--fs-small); margin-bottom: var(--space-md);">
-              Sourced directly from Tuscany and hand-cut by our guild members on-site. Verified for density and structural veins.
-            </p>
-          </div>
-          <button class="btn btn-secondary btn-small" style="align-self: flex-start; padding: var(--space-xs) var(--space-md);">Material Specs</button>
-        </div>
-
-        <!-- Reusable Image Component with 3:4 aspect ratio -->
-        <div style="grid-column: span 4;">
+        <!-- Project 1 -->
+        <div style="grid-column: span 4;" class="reveal-on-scroll">
           <div class="image-container-3-4">
-            <img class="image-reveal" src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=800&q=80" alt="Material Raw Veneer">
-            <div class="image-dimension-tag">REF_PL_3.4 // PLASTER & WALNUT</div>
+            <img class="image-reveal" src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=800&q=80" alt="The Port Harcourt Villa">
+            <div class="image-dimension-tag">CASE_01 // CLAY & BRONZE</div>
           </div>
-          <h4 style="font-size: var(--fs-h3); margin-top: var(--space-sm); font-style: italic;">The Drawing Room Elevation</h4>
-          <p style="font-size: var(--fs-small); color: var(--text-muted);">Asymmetrical balance highlighting the intersection of hand-polished stone and brushed brass.</p>
+          <h4 style="font-size: var(--fs-h3); margin-top: var(--space-sm); font-style: italic;">The Port Harcourt Villa</h4>
+          <p style="font-size: var(--fs-small); color: var(--text-muted); margin-top: var(--space-xxs);">
+            An absolute masterwork of asymmetrical plaster balance and heavy unlacquered brass partitions. Seamless limestone slab flooring throughout.
+          </p>
         </div>
 
-        <!-- Another 3:4 Image Container -->
-        <div style="grid-column: span 4;">
+        <!-- Project 2 -->
+        <div style="grid-column: span 4;" class="reveal-on-scroll">
           <div class="image-container-3-4">
-            <img class="image-reveal" src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80" alt="Minimalist Stone Join">
-            <div class="image-dimension-tag">REF_ST_3.4 // TRAVERTINE SLAB</div>
+            <img class="image-reveal" src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80" alt="The Trans-Amadi Residence">
+            <div class="image-dimension-tag">CASE_02 // TRAVERTINE MONOLITH</div>
           </div>
-          <h4 style="font-size: var(--fs-h3); margin-top: var(--space-sm); font-style: italic;">Hand-Carved Stone Joints</h4>
-          <p style="font-size: var(--fs-small); color: var(--text-muted);">Macro-detailed visualization of unyielding material density. Proving craftsmanship through tight geometric tolerance.</p>
+          <h4 style="font-size: var(--fs-h3); margin-top: var(--space-sm); font-style: italic;">The Trans-Amadi Penthouse</h4>
+          <p style="font-size: var(--fs-small); color: var(--text-muted); margin-top: var(--space-xxs);">
+            A high-contrast design containing raw-plaster fireplace assemblies and dark European oak libraries. Highly restrained structural lighting channels.
+          </p>
+        </div>
+
+        <!-- Project 3 -->
+        <div style="grid-column: span 4;" class="reveal-on-scroll">
+          <div class="image-container-3-4">
+            <img class="image-reveal" src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80" alt="GRA Phase II Drawing Room">
+            <div class="image-dimension-tag">CASE_03 // WALNUT PANELING</div>
+          </div>
+          <h4 style="font-size: var(--fs-h3); margin-top: var(--space-sm); font-style: italic;">The GRA Estate Drawing Room</h4>
+          <p style="font-size: var(--fs-small); color: var(--text-muted); margin-top: var(--space-xxs);">
+            Custom bookmatched walnut cabinetry interacting beautifully with massive stone steps. Built to celebrate raw, tactile material weight.
+          </p>
         </div>
       </div>
     </section>
 
-    <!-- SECTION 6: THE ATELIER COMMISSION LEDGER FORM -->
-    <section class="section-container" id="forms">
-      <div style="margin-bottom: var(--space-xl);">
-        <span style="font-family: var(--font-sans); font-size: var(--fs-micro); letter-spacing: var(--tracking-wider); text-transform: uppercase; color: var(--accent-color);">05 / THE ATELIER COMMISSION LEDGER</span>
-        <h2 style="font-size: var(--fs-h1); margin-top: var(--space-xs);">Bespoke Intake Inquiry</h2>
-      </div>
 
+    <!-- --- 7. PROCESS PREVIEW --- -->
+    <section class="section-container" id="process" style="background-color: var(--panel-bg);">
       <div class="blueprint-grid">
-        <div style="grid-column: span 4; margin-bottom: var(--space-md);">
-          <h3 style="font-size: var(--fs-h2); font-weight: 300; margin-bottom: var(--space-sm);">Commission Initiation</h3>
-          <p style="font-size: var(--fs-small);">
-            We reject standard, fast contact forms. Our ledger represents a formal architectural registration, guaranteeing human review by the Principal Designer.
+        <div style="grid-column: span 4; margin-bottom: var(--space-xl);">
+          <span style="font-family: var(--font-sans); font-size: var(--fs-micro); letter-spacing: var(--tracking-wider); text-transform: uppercase; color: var(--accent-color);">05 / RESTRAINED WORKFLOW</span>
+          <h2 style="font-size: var(--fs-h1); margin-top: var(--space-xs);">The Four-Tier Commission</h2>
+          <p style="margin-top: var(--space-md); font-size: var(--fs-body);">
+            We reject the typical marketing sprint. Our structural process is designed to construct an environment of pure confidence, step by absolute step.
           </p>
         </div>
 
-        <form style="grid-column: span 8;" id="ledgerForm" onsubmit="event.preventDefault(); alert('Commission registered into structural ledger.');">
+        <div style="grid-column: span 8;">
+          <div class="blueprint-grid" style="row-gap: var(--space-xl);">
+            <div style="grid-column: span 6;">
+              <span class="step-number">STEP 01</span>
+              <h4 style="font-size: var(--fs-h3); margin-bottom: var(--space-xs);">Formal Intake Registry</h4>
+              <p style="font-size: var(--fs-small);">
+                We evaluate your site coordinates, light vectors, and foundational requirements. Our Principal Architect conducts an initial site review to identify spatial parameters.
+              </p>
+            </div>
+
+            <div style="grid-column: span 6;">
+              <span class="step-number">STEP 02</span>
+              <h4 style="font-size: var(--fs-h3); margin-bottom: var(--space-xs);">Curation & Real Material Sampling</h4>
+              <p style="font-size: var(--fs-small);">
+                Instead of simple 3D renderings, you are presented with solid timber mockups, real stone cuts, and metal samples to physically experience sensory weight and depth.
+              </p>
+            </div>
+
+            <div style="grid-column: span 6;">
+              <span class="step-number">STEP 03</span>
+              <h4 style="font-size: var(--fs-h3); margin-bottom: var(--space-xs);">Drafting & Tolerances Spec</h4>
+              <p style="font-size: var(--fs-small);">
+                Developing the physical blueprints, custom millwork cuts, and material connections. Layout details are calibrated to micro-tolerances to avoid gaps or design shifts.
+              </p>
+            </div>
+
+            <div style="grid-column: span 6;">
+              <span class="step-number">STEP 04</span>
+              <h4 style="font-size: var(--fs-h3); margin-bottom: var(--space-xs);">Guild Construction Assembly</h4>
+              <p style="font-size: var(--fs-small);">
+                Our dedicated guild craftsmen begin the on-site physical commission assembly. Every block of marble and panel of timber is carefully aligned and structurally anchored.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- --- 8. TESTIMONIALS PREVIEW --- -->
+    <section class="section-container">
+      <div style="margin-bottom: var(--space-xl);">
+        <span style="font-family: var(--font-sans); font-size: var(--fs-micro); letter-spacing: var(--tracking-wider); text-transform: uppercase; color: var(--accent-color);">06 / THE VERDICT OF TRUST</span>
+        <h2 style="font-size: var(--fs-h1); margin-top: var(--space-xs);">Narratives from Living Spaces</h2>
+      </div>
+
+      <div class="blueprint-grid">
+        <div style="grid-column: span 6;" class="reveal-on-scroll">
+          <p class="testimonial-quote">
+            "Before commissioning PTL, we had met three different decorators whose drawings looked gorgeous but whose finished joins split within six months. PTL's approach with actual physical walnut slabs prior to signing contracts completely changed our perspective. Their integrity was clear from the blueprint."
+          </p>
+          <p style="font-family: var(--font-sans); font-size: var(--fs-small); font-weight: 600; color: var(--text-color);">
+            CHIEF OLUMIDE A. — THE GRA ESTATE COMMISSION
+          </p>
+          <span style="font-family: var(--font-sans); font-size: var(--fs-micro); color: var(--accent-color); letter-spacing: var(--tracking-wide);">COMPLETED IN 2023 // TRAVERTINE & SOLID WALNUT</span>
+        </div>
+
+        <div style="grid-column: span 6;" class="reveal-on-scroll">
+          <p class="testimonial-quote">
+            "We wanted a residential interior that didn't feel artificial. PTL understood that luxury is derived from absolute material restraint. Their micro-tolerance on the stone steps and deep architectural panel walls feels solid, quiet, and completely permanent."
+          </p>
+          <p style="font-family: var(--font-sans); font-size: var(--fs-small); font-weight: 600; color: var(--text-color);">
+            DR. NENGI T. — THE TRANS-AMADI RESIDENCY
+          </p>
+          <span style="font-family: var(--font-sans); font-size: var(--fs-micro); color: var(--accent-color); letter-spacing: var(--tracking-wide);">COMPLETED IN 2024 // POLISHED PLASTER & BRASS</span>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- --- 9. FINAL CALL-TO-ACTION (COMMISSION LEDGER) --- -->
+    <section class="section-container" id="commission" style="background-color: var(--panel-bg);">
+      <div class="blueprint-grid">
+        <div style="grid-column: span 4; margin-bottom: var(--space-xl);">
+          <span style="font-family: var(--font-sans); font-size: var(--fs-micro); letter-spacing: var(--tracking-wider); text-transform: uppercase; color: var(--accent-color); font-weight: 600;">THE ATELIER COMMISSION LEDGER</span>
+          <h2 style="font-size: var(--fs-h1); margin-top: var(--space-xs); font-weight: 300;">
+            Initiate Architectural Registration
+          </h2>
+          <p style="margin-top: var(--space-md); font-size: var(--fs-body);">
+            We reject the concept of casual digital contact forms. Registration in our ledger constitutes a formal request for structural curation. All entries are reviewed personally by the Principal.
+          </p>
+          <div class="hairline-divider" style="margin-top: var(--space-xl);"></div>
+          <p style="font-size: var(--fs-small); color: var(--text-muted);">
+            PTL Atelier Ventures accepts only six marquee turnkey residential commissions annually, preserving technical precision and material sourcing integrity.
+          </p>
+        </div>
+
+        <form style="grid-column: span 8;" id="ledgerForm" onsubmit="event.preventDefault(); alert('Your commission request has been recorded into the physical ledger. The Atelier will respond within 48 hours.');">
           <div class="ledger-form-group">
             <input type="text" id="clientName" class="ledger-input" placeholder=" " required autocomplete="off">
-            <label for="clientName" class="ledger-label">Your Name</label>
+            <label for="clientName" class="ledger-label">YOUR FULL NAME</label>
+          </div>
+
+          <div class="ledger-form-group">
+            <input type="email" id="clientEmail" class="ledger-input" placeholder=" " required autocomplete="off">
+            <label for="clientEmail" class="ledger-label">SECURE EMAIL ADDRESS</label>
           </div>
 
           <div class="ledger-form-group">
@@ -253,60 +536,24 @@
               <option value="millwork">Material Sourcing & Custom Millwork</option>
               <option value="turnkey">The Turnkey Atelier Commission</option>
             </select>
-            <label for="projectCommission" class="ledger-label">Type of Commission</label>
+            <label for="projectCommission" class="ledger-label">PROPOSED DISCIPLINE</label>
           </div>
 
           <div class="ledger-form-group">
             <textarea id="projectNotes" class="ledger-textarea" placeholder=" " required></textarea>
-            <label for="projectNotes" class="ledger-label">Project Coordinates / Site Scope Notes</label>
+            <label for="projectNotes" class="ledger-label">PROJECT COORDINATES / SPATIAL PARAMETERS</label>
           </div>
 
-          <button type="submit" class="btn btn-primary" style="margin-top: var(--space-md);">Register Commission</button>
+          <button type="submit" class="btn btn-primary" style="margin-top: var(--space-md); background-color: var(--color-primary-blue); color: #FFFFFF;">
+            Register Commission Request
+          </button>
         </form>
       </div>
     </section>
 
-    <!-- SECTION 7: RESPONSIVE BREAKPOINT GRID VISUALIZATION -->
-    <section class="section-container" id="grid">
-      <div style="margin-bottom: var(--space-xl);">
-        <span style="font-family: var(--font-sans); font-size: var(--fs-micro); letter-spacing: var(--tracking-wider); text-transform: uppercase; color: var(--accent-color);">06 / GRID & BREAKPOINTS</span>
-        <h2 style="font-size: var(--fs-h1); margin-top: var(--space-xs);">Fluid Structural Columns</h2>
-      </div>
-
-      <p style="margin-bottom: var(--space-lg); font-size: var(--fs-body);">
-        Our layout system uses an asymmetric architectural blueprint. Mobile utilizes a 4-column alignment scale, while Desktop expands cleanly to a wide 12-column template. Below is a living blueprint layout visualization:
-      </p>
-
-      <div class="blueprint-grid" style="row-gap: var(--space-md);">
-        <div style="grid-column: span 1; background-color: var(--panel-bg); height: 48px; border: 0.5px dashed var(--accent-color); display: flex; align-items: center; justify-content: center; font-size: var(--fs-micro);">COL 1</div>
-        <div style="grid-column: span 1; background-color: var(--panel-bg); height: 48px; border: 0.5px dashed var(--accent-color); display: flex; align-items: center; justify-content: center; font-size: var(--fs-micro);">COL 2</div>
-        <div style="grid-column: span 1; background-color: var(--panel-bg); height: 48px; border: 0.5px dashed var(--accent-color); display: flex; align-items: center; justify-content: center; font-size: var(--fs-micro);">COL 3</div>
-        <div style="grid-column: span 1; background-color: var(--panel-bg); height: 48px; border: 0.5px dashed var(--accent-color); display: flex; align-items: center; justify-content: center; font-size: var(--fs-micro);">COL 4</div>
-
-        <!-- Desktop Grid helper columns hidden automatically by the CSS framework inside blueprint-grid on mobile -->
-        <div class="desktop-only-grid-col" style="grid-column: span 1; background-color: var(--panel-bg); height: 48px; border: 0.5px dashed var(--accent-color); display: flex; align-items: center; justify-content: center; font-size: var(--fs-micro);">COL 5</div>
-        <div class="desktop-only-grid-col" style="grid-column: span 1; background-color: var(--panel-bg); height: 48px; border: 0.5px dashed var(--accent-color); display: flex; align-items: center; justify-content: center; font-size: var(--fs-micro);">COL 6</div>
-        <div class="desktop-only-grid-col" style="grid-column: span 1; background-color: var(--panel-bg); height: 48px; border: 0.5px dashed var(--accent-color); display: flex; align-items: center; justify-content: center; font-size: var(--fs-micro);">COL 7</div>
-        <div class="desktop-only-grid-col" style="grid-column: span 1; background-color: var(--panel-bg); height: 48px; border: 0.5px dashed var(--accent-color); display: flex; align-items: center; justify-content: center; font-size: var(--fs-micro);">COL 8</div>
-        <div class="desktop-only-grid-col" style="grid-column: span 1; background-color: var(--panel-bg); height: 48px; border: 0.5px dashed var(--accent-color); display: flex; align-items: center; justify-content: center; font-size: var(--fs-micro);">COL 9</div>
-        <div class="desktop-only-grid-col" style="grid-column: span 1; background-color: var(--panel-bg); height: 48px; border: 0.5px dashed var(--accent-color); display: flex; align-items: center; justify-content: center; font-size: var(--fs-micro);">COL 10</div>
-        <div class="desktop-only-grid-col" style="grid-column: span 1; background-color: var(--panel-bg); height: 48px; border: 0.5px dashed var(--accent-color); display: flex; align-items: center; justify-content: center; font-size: var(--fs-micro);">COL 11</div>
-        <div class="desktop-only-grid-col" style="grid-column: span 1; background-color: var(--panel-bg); height: 48px; border: 0.5px dashed var(--accent-color); display: flex; align-items: center; justify-content: center; font-size: var(--fs-micro);">COL 12</div>
-      </div>
-
-      <!-- Tiny style hack for this demo to hide desktop-only-grid-col under 768px -->
-      <style>
-        @media (max-width: 767px) {
-          .desktop-only-grid-col {
-            display: none !important;
-          }
-        }
-      </style>
-    </section>
-
   </main>
 
-  <!-- --- ATELIER FOOTER COMPONENT --- -->
+  <!-- --- 10. REUSABLE ATELIER FOOTER --- -->
   <footer class="atelier-footer">
     <div class="footer-top">
       <div class="footer-brand">
@@ -319,10 +566,11 @@
       <div>
         <h5 class="footer-column-title">COMMISSIONS</h5>
         <ul class="footer-links">
-          <li><a href="#about">The Atelier</a></li>
-          <li><a href="#materials">Material Library</a></li>
+          <li><a href="#atelier">The Atelier</a></li>
+          <li><a href="#principles">Foundational Principles</a></li>
+          <li><a href="#services">Core Disciplines</a></li>
           <li><a href="#portfolio">Finished Works</a></li>
-          <li><a href="#process">The 142-Point Audit</a></li>
+          <li><a href="#process">Four-Tier Process</a></li>
         </ul>
       </div>
 
@@ -349,7 +597,6 @@
 
   <!-- Theme Toggle Floating Button -->
   <div class="theme-toggle-fixed" id="themeToggle" title="Toggle Blueprint Theme">
-    <!-- Beautiful minimal sun/moon glyph representation using unicode characters -->
     <span id="themeIcon" style="font-size: 20px;">◑</span>
   </div>
 
