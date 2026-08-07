@@ -20,16 +20,19 @@ document.addEventListener('DOMContentLoaded', () => {
   htmlElement.setAttribute('data-theme', currentTheme);
   updateThemeIcon(currentTheme);
 
-  themeToggle.addEventListener('click', () => {
-    const activeTheme = htmlElement.getAttribute('data-theme');
-    const newTheme = activeTheme === 'dark' ? 'light' : 'dark';
+  if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+      const activeTheme = htmlElement.getAttribute('data-theme');
+      const newTheme = activeTheme === 'dark' ? 'light' : 'dark';
 
-    htmlElement.setAttribute('data-theme', newTheme);
-    localStorage.setItem('ptl-theme', newTheme);
-    updateThemeIcon(newTheme);
-  });
+      htmlElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('ptl-theme', newTheme);
+      updateThemeIcon(newTheme);
+    });
+  }
 
   function updateThemeIcon(theme) {
+    if (!themeIcon) return;
     // ◑ represent half light, half dark balance
     if (theme === 'dark') {
       themeIcon.textContent = '●'; // solid for deep architectural blue
@@ -50,17 +53,23 @@ document.addEventListener('DOMContentLoaded', () => {
   const navLinks = document.querySelectorAll('.nav-link');
   const navPreviewImage = document.getElementById('navPreviewImage');
 
-  menuToggle.addEventListener('click', () => {
-    navOverlay.classList.add('is-active');
-    document.body.style.overflow = 'hidden'; // Lock scrolling
-  });
+  if (menuToggle && navOverlay) {
+    menuToggle.addEventListener('click', () => {
+      navOverlay.classList.add('is-active');
+      document.body.style.overflow = 'hidden'; // Lock scrolling
+    });
+  }
 
   const closeMenu = () => {
-    navOverlay.classList.remove('is-active');
+    if (navOverlay) {
+      navOverlay.classList.remove('is-active');
+    }
     document.body.style.overflow = ''; // Unlock scrolling
   };
 
-  menuClose.addEventListener('click', closeMenu);
+  if (menuClose) {
+    menuClose.addEventListener('click', closeMenu);
+  }
 
   // Close overlay on clicking any navigation link
   navLinks.forEach(link => {
@@ -71,14 +80,16 @@ document.addEventListener('DOMContentLoaded', () => {
     // Blueprint hover pre-rendering mechanism
     link.addEventListener('mouseenter', (e) => {
       const imgSrc = e.currentTarget.getAttribute('data-img');
-      if (imgSrc) {
+      if (imgSrc && navPreviewImage) {
         navPreviewImage.src = imgSrc;
         navPreviewImage.classList.add('is-visible');
       }
     });
 
     link.addEventListener('mouseleave', () => {
-      navPreviewImage.classList.remove('is-visible');
+      if (navPreviewImage) {
+        navPreviewImage.classList.remove('is-visible');
+      }
     });
   });
 
@@ -86,9 +97,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // ==========================================
   // 3. LEDGER FORM - COMPONENT VALUE TRACKING
   // ==========================================
-  const formSelect = document.getElementById('projectCommission');
-  if (formSelect) {
-    formSelect.addEventListener('change', (e) => {
+  const formSelects = document.querySelectorAll('.ledger-select');
+  formSelects.forEach(select => {
+    select.addEventListener('change', (e) => {
       // Keep state of select active so label doesn't overlap text
       if (e.target.value !== "") {
         e.target.setAttribute('value', e.target.value);
@@ -96,21 +107,13 @@ document.addEventListener('DOMContentLoaded', () => {
         e.target.removeAttribute('value');
       }
     });
-  }
+  });
 
 
   // ==========================================
   // 4. SCROLL REVEAL (ELEGANT ATELIER DECELLERATION)
   // ==========================================
   const scrollElements = document.querySelectorAll('.reveal-on-scroll');
-
-  // Wrap demo sections in scroll reveals dynamically to test animation
-  const sectionsToReveal = document.querySelectorAll('.section-container');
-  sectionsToReveal.forEach((sec, idx) => {
-    if (idx > 0) { // Keep first section instantly visible
-      sec.classList.add('reveal-on-scroll');
-    }
-  });
 
   const observerOptions = {
     root: null,
@@ -127,8 +130,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }, observerOptions);
 
-  // Select all reveal nodes
-  document.querySelectorAll('.reveal-on-scroll').forEach(el => {
+  scrollElements.forEach(el => {
     scrollObserver.observe(el);
   });
 
