@@ -1,0 +1,814 @@
+/*
+================================================================================
+  L U M I N A   F O R G E   -   D E S I G N   F O U N D A T I O N
+  Client: PTL Atelier Ventures
+  Theme: "The Architectural Atelier"
+  Philosophy: Luxury through restraint, physical weight, structural honesty.
+================================================================================
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  /* --- PALETTE SYSTEM --- */
+  --color-primary-blue: #0B1B2D;       /* Deep Architectural Blue */
+  --color-pure-white: #FFFFFF;         /* Pure White */
+  --color-gold-brushed: #C5A880;       /* Soft Brushed Gold */
+  --color-rich-charcoal: #1E1E1E;      /* Rich Charcoal (Never #000) */
+
+  /* --- FUNCTIONAL COLORS (LIGHT THEME) --- */
+  --bg-color: var(--color-pure-white);
+  --text-color: var(--color-rich-charcoal);
+  --text-muted: #5A6578;
+  --border-color: rgba(11, 27, 45, 0.12); /* 0.5px architectural hairline */
+  --border-hover: rgba(11, 27, 45, 0.8);
+  --panel-bg: #F8F9FA;
+  --panel-border: rgba(11, 27, 45, 0.08);
+  --accent-color: var(--color-gold-brushed);
+  --accent-hover: #B4946B;
+  --overlay-bg: var(--color-primary-blue);
+  --overlay-text: var(--color-pure-white);
+
+  /* --- TYPOGRAPHY SCALE --- */
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  /* Base sizes (Fluid scale with clamp) */
+  --fs-display: clamp(2.25rem, 5vw, 4.5rem);     /* Large narrative headings */
+  --fs-h1: clamp(1.75rem, 4vw, 3.25rem);          /* Main headings */
+  --fs-h2: clamp(1.5rem, 3vw, 2.25rem);           /* Section headers */
+  --fs-h3: clamp(1.2rem, 2vw, 1.6rem);            /* Inner components */
+  --fs-body: clamp(0.95rem, 1.2vw, 1.125rem);     /* Body copy */
+  --fs-small: clamp(0.8rem, 1vw, 0.9rem);         /* Metadata / details */
+  --fs-micro: 0.6875rem;                          /* Technical labels / blueprints */
+
+  /* Letter spacing */
+  --tracking-wide: 0.15em;
+  --tracking-wider: 0.25em;
+  --tracking-normal: 0.02em;
+
+  /* Line Heights */
+  --lh-heading: 1.15;
+  --lh-body: 1.65;
+
+  /* --- SPACING SCALE (8px Blueprint Grid) --- */
+  --space-xxs: 0.25rem;  /* 4px */
+  --space-xs: 0.5rem;    /* 8px */
+  --space-sm: 0.75rem;   /* 12px */
+  --space-md: 1rem;      /* 16px */
+  --space-lg: 1.5rem;    /* 24px */
+  --space-xl: 2rem;      /* 32px */
+  --space-xxl: 3rem;     /* 48px */
+  --space-huge: 4rem;    /* 64px */
+  --space-colossus: 6rem;/* 96px */
+  --space-monument: 8rem;/* 128px */
+
+  /* --- BORDER RADIUS PHILOSOPHY --- */
+  /* Sharp structural geometry: Absolutely no playful round corners.
+     Everything sits flat and grounded, evoking heavy stone & steel. */
+  --radius-none: 0px;
+  --radius-tactile: 2px; /* For tiny structural buttons or input tabs only */
+
+  /* --- SHADOW PHILOSOPHY (TACTILE OVER BLURRY) --- */
+  /* We reject default blurry drop shadows. Instead, we use thin solid
+     hairlines, inset depths, and structural solid offsets. */
+  --shadow-hairline: 0 0 0 1px var(--border-color);
+  --shadow-pressed: inset 0 2px 4px rgba(0, 0, 0, 0.06);
+  --shadow-structural: 4px 4px 0px 0px var(--color-primary-blue);
+  --shadow-structural-gold: 4px 4px 0px 0px var(--color-gold-brushed);
+
+  /* --- TRANSITIONS & PHYSICAL ANIMATIONS --- */
+  /* Mimicking luxury weight, inertia, and high-end dampening */
+  --ease-atelier: cubic-bezier(0.16, 1, 0.3, 1); /* Slow, luxurious deceleration */
+  --transition-slow: 1.2s var(--ease-atelier);
+  --transition-medium: 0.6s var(--ease-atelier);
+  --transition-fast: 0.25s ease-out;
+
+  /* --- BREAKPOINTS --- */
+  --breakpoint-sm: 576px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1200px;
+}
+
+/* --- DARK THEME OVERRIDES --- */
+[data-theme="dark"] {
+  --bg-color: var(--color-primary-blue);
+  --text-color: var(--color-pure-white);
+  --text-muted: #A3B3C8;
+  --border-color: rgba(255, 255, 255, 0.12); /* Architectural white hairline */
+  --border-hover: rgba(197, 168, 128, 0.8);
+  --panel-bg: rgba(255, 255, 255, 0.03);
+  --panel-border: rgba(255, 255, 255, 0.06);
+  --accent-color: var(--color-gold-brushed);
+  --accent-hover: #E4CCAA;
+  --overlay-bg: #071321;
+  --overlay-text: var(--color-pure-white);
+  --shadow-structural: 4px 4px 0px 0px var(--color-gold-brushed);
+}
+
+/* ================================================================================
+   RESET & FOUNDATION STYLES
+   ================================================================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: initial; /* Handled customly or left clean for momentum */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color var(--transition-medium), color var(--transition-medium);
+}
+
+body {
+  font-family: var(--font-sans);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  font-weight: 400;
+  overflow-x: hidden;
+}
+
+/* Typography elements */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+  line-height: var(--lh-heading);
+  font-weight: 300;
+  color: var(--text-color);
+}
+
+p {
+  color: var(--text-muted);
+  max-width: 65ch; /* Comfortable reading length */
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--transition-fast), border-color var(--transition-fast);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+button, input, select, textarea {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  outline: none;
+}
+
+/* ================================================================================
+   LAYOUT COMPONENTS & SYSTEMS (Grid, Blueprint Borders, Section Containers)
+   ================================================================================ */
+
+/* Reusable section container: Forces structured, elegant spacing and mobile-first paddings */
+.section-container {
+  padding: var(--space-xxl) var(--space-md);
+  position: relative;
+  border-bottom: 0.5px solid var(--border-color);
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .section-container {
+    padding: var(--space-huge) var(--space-xl);
+  }
+}
+
+@media (min-width: 1024px) {
+  .section-container {
+    padding: var(--space-colossus) var(--space-huge);
+  }
+}
+
+/* Structural Architectural Grid (Mobile-first, asymmetrical) */
+.blueprint-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-md);
+}
+
+@media (min-width: 768px) {
+  .blueprint-grid {
+    grid-template-columns: repeat(12, 1fr);
+    gap: var(--space-lg);
+  }
+}
+
+/* The Hairline Splitter - used as divider to show structural alignment */
+.hairline-divider {
+  width: 100%;
+  height: 0.5px;
+  background-color: var(--border-color);
+  margin: var(--space-lg) 0;
+  display: block;
+  transition: background-color var(--transition-medium);
+}
+
+/* ================================================================================
+   UI COMPONENTS (BUTTONS, CARDS, FORMS, NAVIGATION, FOOTER)
+   ================================================================================ */
+
+/* --- REUSABLE BUTTON VARIANTS --- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-md) var(--space-xl);
+  font-family: var(--font-sans);
+  font-size: var(--fs-small);
+  text-transform: uppercase;
+  font-weight: 500;
+  letter-spacing: var(--tracking-wide);
+  cursor: pointer;
+  transition: all var(--transition-medium);
+  border-radius: var(--radius-none);
+  position: relative;
+}
+
+/* Variant 1: Primary - Heavy, permanent, physical block */
+.btn-primary {
+  background-color: var(--text-color);
+  color: var(--bg-color);
+  border: 1px solid var(--text-color);
+}
+
+.btn-primary:hover {
+  background-color: transparent;
+  color: var(--text-color);
+  transform: translateY(-2px);
+}
+
+/* Variant 2: Secondary - Fine Line Outline */
+.btn-secondary {
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+}
+
+.btn-secondary:hover {
+  border-color: var(--text-color);
+  color: var(--accent-color);
+  transform: translateY(-2px);
+}
+
+/* Variant 3: Structural Gold Accent Button */
+.btn-accent {
+  background-color: transparent;
+  color: var(--text-color);
+  border: 1px solid var(--accent-color);
+  overflow: hidden;
+}
+
+.btn-accent::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background-color: var(--accent-color);
+  transition: left var(--transition-medium);
+  z-index: -1;
+}
+
+.btn-accent:hover {
+  color: var(--bg-color);
+}
+
+.btn-accent:hover::before {
+  left: 0;
+}
+
+/* Variant 4: Minimal Text Link with Gold Dot */
+.btn-text {
+  padding: 0;
+  background: none;
+  border: none;
+  color: var(--text-color);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.btn-text::after {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background-color: var(--accent-color);
+  border-radius: 50%;
+  transition: transform var(--transition-medium);
+}
+
+.btn-text:hover {
+  color: var(--accent-color);
+}
+
+.btn-text:hover::after {
+  transform: scale(1.8);
+}
+
+
+/* --- REUSABLE CARDS (ANATOMY OF A SPACE) --- */
+.card-blueprint {
+  background-color: var(--panel-bg);
+  border: 0.5px solid var(--panel-border);
+  padding: var(--space-lg);
+  position: relative;
+  transition: border-color var(--transition-slow), transform var(--transition-medium);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-blueprint:hover {
+  border-color: var(--accent-color);
+  transform: translateY(-4px);
+}
+
+/* Decorative blueprint coordinates in cards to feel handcrafted */
+.card-blueprint::before {
+  content: "REF. SPEC-PH_" attr(data-id);
+  position: absolute;
+  top: var(--space-sm);
+  right: var(--space-sm);
+  font-family: var(--font-sans);
+  font-size: var(--fs-micro);
+  letter-spacing: var(--tracking-wider);
+  color: var(--accent-color);
+  font-weight: 500;
+}
+
+
+/* --- FORM COMPONENTS (THE ATELIER COMMISSION LEDGER) --- */
+.ledger-form-group {
+  position: relative;
+  margin-bottom: var(--space-xl);
+  width: 100%;
+}
+
+.ledger-input, .ledger-select, .ledger-textarea {
+  width: 100%;
+  padding: var(--space-sm) 0;
+  border: none;
+  border-bottom: 0.5px solid var(--border-color);
+  background-color: transparent;
+  color: var(--text-color);
+  font-family: var(--font-sans);
+  font-size: var(--fs-body);
+  transition: border-color var(--transition-fast);
+}
+
+.ledger-textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.ledger-label {
+  position: absolute;
+  top: var(--space-sm);
+  left: 0;
+  font-family: var(--font-sans);
+  font-size: var(--fs-body);
+  color: var(--text-muted);
+  pointer-events: none;
+  transition: all var(--transition-medium);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+}
+
+/* Focus and active float states */
+.ledger-input:focus ~ .ledger-label,
+.ledger-input:not(:placeholder-shown) ~ .ledger-label,
+.ledger-select:focus ~ .ledger-label,
+.ledger-select:not([value=""]) ~ .ledger-label,
+.ledger-textarea:focus ~ .ledger-label,
+.ledger-textarea:not(:placeholder-shown) ~ .ledger-label {
+  top: -12px;
+  font-size: var(--fs-micro);
+  color: var(--accent-color);
+  letter-spacing: var(--tracking-wider);
+}
+
+.ledger-input:focus, .ledger-select:focus, .ledger-textarea:focus {
+  border-bottom-color: var(--text-color);
+}
+
+
+/* --- NAVIGATION COMPONENT ("QUIET FRAME") --- */
+.quiet-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 64px;
+  background-color: rgba(var(--bg-color), 0.95);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom: 0.5px solid var(--border-color);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--space-md);
+  transition: background-color var(--transition-medium), border-color var(--transition-medium);
+}
+
+@media (min-width: 768px) {
+  .quiet-header {
+    height: 80px;
+    padding: 0 var(--space-xl);
+  }
+}
+
+.quiet-logo {
+  font-family: var(--font-sans);
+  font-size: var(--fs-small);
+  font-weight: 600;
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--text-color);
+}
+
+.quiet-coordinates {
+  display: none;
+  font-family: var(--font-sans);
+  font-size: var(--fs-micro);
+  letter-spacing: var(--tracking-wider);
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+@media (min-width: 1024px) {
+  .quiet-coordinates {
+    display: block;
+  }
+}
+
+.quiet-menu-btn {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-family: var(--font-serif);
+  font-size: var(--fs-body);
+  font-style: italic;
+  cursor: pointer;
+  color: var(--text-color);
+}
+
+.quiet-menu-dot {
+  width: 8px;
+  height: 8px;
+  background-color: var(--accent-color);
+  border-radius: 50%;
+  display: inline-block;
+  transition: transform var(--transition-medium);
+}
+
+.quiet-menu-btn:hover .quiet-menu-dot {
+  transform: scale(1.6);
+}
+
+/* NAVIGATION FULL-SCREEN OVERLAY */
+.nav-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--overlay-bg);
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--transition-slow);
+}
+
+.nav-overlay.is-active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.nav-overlay-content {
+  width: 100%;
+  max-width: 1200px;
+  padding: var(--space-xl);
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-xl);
+}
+
+@media (min-width: 768px) {
+  .nav-overlay-content {
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+  }
+}
+
+.nav-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.nav-item {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: transform var(--transition-slow), opacity var(--transition-slow);
+}
+
+.nav-overlay.is-active .nav-item {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger item loads in overlay */
+.nav-overlay.is-active .nav-item:nth-child(1) { transition-delay: 0.1s; }
+.nav-overlay.is-active .nav-item:nth-child(2) { transition-delay: 0.2s; }
+.nav-overlay.is-active .nav-item:nth-child(3) { transition-delay: 0.3s; }
+.nav-overlay.is-active .nav-item:nth-child(4) { transition-delay: 0.4s; }
+.nav-overlay.is-active .nav-item:nth-child(5) { transition-delay: 0.5s; }
+
+.nav-link {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  color: var(--overlay-text);
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-md);
+}
+
+.nav-link span {
+  font-family: var(--font-sans);
+  font-size: var(--fs-small);
+  color: var(--accent-color);
+  letter-spacing: var(--tracking-wider);
+}
+
+.nav-link:hover {
+  color: var(--accent-color);
+  padding-left: var(--space-md);
+}
+
+.nav-preview-box {
+  display: none;
+  border: 0.5px solid rgba(255, 255, 255, 0.12);
+  height: 350px;
+  position: relative;
+  overflow: hidden;
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+@media (min-width: 768px) {
+  .nav-preview-box {
+    display: block;
+  }
+}
+
+.nav-preview-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity var(--transition-medium);
+  filter: grayscale(100%);
+}
+
+.nav-preview-image.is-visible {
+  opacity: 0.4;
+}
+
+.nav-overlay-close {
+  position: absolute;
+  top: var(--space-lg);
+  right: var(--space-lg);
+  color: var(--overlay-text);
+  font-family: var(--font-sans);
+  font-size: var(--fs-small);
+  letter-spacing: var(--tracking-wide);
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+
+/* --- FOOTER COMPONENT --- */
+.atelier-footer {
+  background-color: var(--color-primary-blue);
+  color: var(--color-pure-white);
+  padding: var(--space-colossus) var(--space-md) var(--space-xl);
+  border-top: 0.5px solid rgba(255, 255, 255, 0.1);
+}
+
+@media (min-width: 768px) {
+  .atelier-footer {
+    padding: var(--space-monument) var(--space-xl) var(--space-xxl);
+  }
+}
+
+.footer-top {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-huge);
+  margin-bottom: var(--space-colossus);
+}
+
+@media (min-width: 768px) {
+  .footer-top {
+    grid-template-columns: 2fr 1fr 1fr;
+  }
+}
+
+.footer-brand h4 {
+  font-family: var(--font-serif);
+  font-size: var(--fs-h2);
+  color: var(--color-pure-white);
+  margin-bottom: var(--space-md);
+}
+
+.footer-brand p {
+  color: #A3B3C8;
+  font-size: var(--fs-small);
+  margin-bottom: var(--space-lg);
+}
+
+.footer-column-title {
+  font-family: var(--font-sans);
+  font-size: var(--fs-micro);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--accent-color);
+  margin-bottom: var(--space-lg);
+}
+
+.footer-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.footer-links a {
+  color: #A3B3C8;
+  font-size: var(--fs-small);
+}
+
+.footer-links a:hover {
+  color: var(--color-pure-white);
+}
+
+.footer-bottom {
+  border-top: 0.5px solid rgba(255, 255, 255, 0.1);
+  padding-top: var(--space-xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+@media (min-width: 768px) {
+  .footer-bottom {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.footer-copy {
+  font-family: var(--font-sans);
+  font-size: var(--fs-micro);
+  letter-spacing: var(--tracking-wide);
+  color: rgba(255, 255, 255, 0.4);
+}
+
+
+/* --- REUSABLE IMAGE SYSTEM (3:4 Ratio & Cinematic Reveal) --- */
+.image-container-3-4 {
+  width: 100%;
+  position: relative;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  background-color: var(--panel-bg);
+  border: 0.5px solid var(--border-color);
+}
+
+.image-reveal {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow), filter var(--transition-slow);
+  filter: grayscale(15%) contrast(105%);
+}
+
+.image-container-3-4:hover .image-reveal {
+  transform: scale(1.05);
+  filter: grayscale(0%) contrast(100%);
+}
+
+/* Architectural dimension label on image */
+.image-dimension-tag {
+  position: absolute;
+  bottom: var(--space-md);
+  left: var(--space-md);
+  background-color: rgba(11, 27, 45, 0.85);
+  color: var(--color-pure-white);
+  padding: var(--space-xxs) var(--space-xs);
+  font-family: var(--font-sans);
+  font-size: var(--fs-micro);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  backdrop-filter: blur(4px);
+  pointer-events: none;
+}
+
+
+/* ================================================================================
+   ANIMATION CLASSES & TRANSITIONS
+   ================================================================================ */
+
+/* Scroll Reveal base state */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity var(--transition-slow), transform var(--transition-slow);
+}
+
+.reveal-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Beautiful custom cursor block to mimic drafting line */
+.drafting-dot {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .drafting-dot {
+    display: block;
+    position: fixed;
+    width: 6px;
+    height: 6px;
+    background-color: var(--color-gold-brushed);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: transform 0.1s ease-out;
+  }
+}
+
+
+/* ================================================================================
+   LIVING STYLE GUIDE COMPONENT WRAPPERS
+   ================================================================================ */
+.theme-toggle-fixed {
+  position: fixed;
+  bottom: var(--space-lg);
+  right: var(--space-lg);
+  z-index: 999;
+  background-color: var(--text-color);
+  color: var(--bg-color);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: transform var(--transition-fast);
+}
+
+.theme-toggle-fixed:hover {
+  transform: scale(1.1);
+}
+
+.color-token-card {
+  border: 0.5px solid var(--border-color);
+  padding: var(--space-sm);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.color-token-preview {
+  aspect-ratio: 16/9;
+  width: 100%;
+  border: 0.5px solid var(--border-color);
+}

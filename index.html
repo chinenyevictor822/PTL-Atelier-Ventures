@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PTL Atelier Ventures — Design Foundation Showcase</title>
+  <link rel="stylesheet" href="css/design-system.css">
+</head>
+<body>
+
+  <!-- Bespoke Drafting Cursor Dot -->
+  <div class="drafting-dot" id="draftingDot"></div>
+
+  <!-- --- NAVIGATION COMPONENT ("QUIET FRAME") --- -->
+  <header class="quiet-header">
+    <div class="quiet-logo">PTL ATELIER VENTURES</div>
+    <div class="quiet-coordinates">PH: 4.8156° N, 7.0498° E</div>
+    <div class="quiet-menu-btn" id="menuToggle">
+      <span>Menu</span>
+      <span class="quiet-menu-dot"></span>
+    </div>
+  </header>
+
+  <!-- Navigation Full-Screen Overlay -->
+  <div class="nav-overlay" id="navOverlay">
+    <div class="nav-overlay-close" id="menuClose">Close [X]</div>
+    <div class="nav-overlay-content">
+      <nav>
+        <ul class="nav-list">
+          <li class="nav-item">
+            <a href="#about" class="nav-link" data-img="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80">
+              <span>01</span> Atelier
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#materials" class="nav-link" data-img="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=800&q=80">
+              <span>02</span> Materials
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#portfolio" class="nav-link" data-img="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80">
+              <span>03</span> Portfolio
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#process" class="nav-link" data-img="https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?auto=format&fit=crop&w=800&q=80">
+              <span>04</span> Process
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#connect" class="nav-link" data-img="https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&w=800&q=80">
+              <span>05</span> Connect
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <!-- Cinematic blueprint preview window on hover -->
+      <div class="nav-preview-box">
+        <img src="" id="navPreviewImage" class="nav-preview-image" alt="Architectural Preview">
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Showcase Container -->
+  <main style="margin-top: 80px;">
+
+    <!-- SECTION 1: HERO TITLE & MISSION -->
+    <section class="section-container">
+      <div class="blueprint-grid">
+        <div style="grid-column: span 4; margin-bottom: var(--space-xl);">
+          <span style="font-family: var(--font-sans); font-size: var(--fs-micro); letter-spacing: var(--tracking-wider); text-transform: uppercase; color: var(--accent-color); font-weight: 600;">PTL ATELIER SYSTEM v1.0</span>
+          <h1 style="font-size: var(--fs-display); margin-top: var(--space-xs); font-weight: 300;">
+            The Living Design System & Architectural Foundation
+          </h1>
+          <p style="margin-top: var(--space-md); font-size: var(--fs-body);">
+            This system bridges sensory precision, unyielding materials, and absolute structural integrity. Engineered mobile-first, it represents luxury through deliberate restraint.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: PALETTE SYSTEM -->
+    <section class="section-container" id="palette">
+      <div style="margin-bottom: var(--space-xl);">
+        <span style="font-family: var(--font-sans); font-size: var(--fs-micro); letter-spacing: var(--tracking-wider); text-transform: uppercase; color: var(--accent-color);">01 / COLOUR SYSTEM</span>
+        <h2 style="font-size: var(--fs-h1); margin-top: var(--space-xs);">Structural Tone & Material Palette</h2>
+      </div>
+
+      <div class="blueprint-grid">
+        <!-- Card 1 -->
+        <div class="color-token-card" style="grid-column: span 2;">
+          <div class="color-token-preview" style="background-color: var(--color-primary-blue);"></div>
+          <div>
+            <h3 style="font-size: var(--fs-h3); margin-top: var(--space-xs);">Deep Architectural Blue</h3>
+            <p style="font-size: var(--fs-small); margin-top: var(--space-xxs);">#0B1B2D | Blueprints & Twilight. Establishes unyielding authority, intellectual depth, and permanent trust.</p>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="color-token-card" style="grid-column: span 2;">
+          <div class="color-token-preview" style="background-color: var(--color-pure-white); border: 0.5px solid var(--border-color);"></div>
+          <div>
+            <h3 style="font-size: var(--fs-h3); margin-top: var(--space-xs);">Pure White</h3>
+            <p style="font-size: var(--fs-small); margin-top: var(--space-xxs);">#FFFFFF | Plaster Canvas. The material negative space that invites natural shadow play.</p>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="color-token-card" style="grid-column: span 2;">
+          <div class="color-token-preview" style="background-color: var(--color-gold-brushed);"></div>
+          <div>
+            <h3 style="font-size: var(--fs-h3); margin-top: var(--space-xs);">Soft Brushed Gold</h3>
+            <p style="font-size: var(--fs-small); margin-top: var(--space-xxs);">#C5A880 | Unlacquered Brass. Represents precision craftsmanship and structural joints.</p>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="color-token-card" style="grid-column: span 2;">
+          <div class="color-token-preview" style="background-color: var(--color-rich-charcoal);"></div>
+          <div>
+            <h3 style="font-size: var(--fs-h3); margin-top: var(--space-xs);">Rich Charcoal</h3>
+            <p style="font-size: var(--fs-small); margin-top: var(--space-xxs);">#1E1E1E | Graphite Slate. Tactile pencil strokes representing master planning & design truth.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: TYPOGRAPHY SYSTEM -->
+    <section class="section-container" id="typography">
+      <div style="margin-bottom: var(--space-xl);">
+        <span style="font-family: var(--font-sans); font-size: var(--fs-micro); letter-spacing: var(--tracking-wider); text-transform: uppercase; color: var(--accent-color);">02 / TYPOGRAPHY TOKENS</span>
+        <h2 style="font-size: var(--fs-h1); margin-top: var(--space-xs);">Editorial Weight & Structural Readability</h2>
+      </div>
+
+      <div class="blueprint-grid">
+        <div style="grid-column: span 4;">
+          <span style="font-family: var(--font-sans); font-size: var(--fs-micro); letter-spacing: var(--tracking-wider); text-transform: uppercase; color: var(--accent-color); font-weight: 600;">PRIMARY DISPLAY SERIF (CORMORANT GARAMOND)</span>
+          <p style="font-family: var(--font-serif); font-size: var(--fs-display); line-height: 1.1; margin-top: var(--space-sm); color: var(--text-color);">
+            Where integrity and premium materials become a <i>permanent physical legacy</i>.
+          </p>
+          <div class="hairline-divider"></div>
+        </div>
+
+        <div style="grid-column: span 4;">
+          <span style="font-family: var(--font-sans); font-size: var(--fs-micro); letter-spacing: var(--tracking-wider); text-transform: uppercase; color: var(--accent-color); font-weight: 600;">SECONDARY TECHNICAL SANS (INTER / NEUE HAAS)</span>
+          <h3 style="font-family: var(--font-sans); font-size: var(--fs-h2); font-weight: 400; line-height: 1.2; margin-top: var(--space-sm); color: var(--text-color);">
+            PTL.ATELIER.VENTURES_SPEC_PH_4.8
+          </h3>
+          <p style="font-family: var(--font-sans); font-size: var(--fs-body); line-height: 1.6; margin-top: var(--space-md);">
+            This represents raw, unvarnished blueprint technicality. Inter has high geometric precision, giving technical readouts a clean structural weight. Used for components, specifications, timelines, buttons, and system settings.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: REUSABLE BUTTON COMPONENT VARIANTS -->
+    <section class="section-container" id="buttons">
+      <div style="margin-bottom: var(--space-xl);">
+        <span style="font-family: var(--font-sans); font-size: var(--fs-micro); letter-spacing: var(--tracking-wider); text-transform: uppercase; color: var(--accent-color);">03 / BUTTON VARIANTS</span>
+        <h2 style="font-size: var(--fs-h1); margin-top: var(--space-xs);">Tactile Touch-Target Systems</h2>
+      </div>
+
+      <div style="display: flex; flex-wrap: wrap; gap: var(--space-lg); align-items: center;">
+        <div>
+          <span style="display: block; font-size: var(--fs-micro); color: var(--text-muted); margin-bottom: var(--space-xs); text-transform: uppercase; letter-spacing: var(--tracking-wide);">Primary Block</span>
+          <button class="btn btn-primary">Commission Atelier</button>
+        </div>
+
+        <div>
+          <span style="display: block; font-size: var(--fs-micro); color: var(--text-muted); margin-bottom: var(--space-xs); text-transform: uppercase; letter-spacing: var(--tracking-wide);">Secondary Outline</span>
+          <button class="btn btn-secondary">Explore Materials</button>
+        </div>
+
+        <div>
+          <span style="display: block; font-size: var(--fs-micro); color: var(--text-muted); margin-bottom: var(--space-xs); text-transform: uppercase; letter-spacing: var(--tracking-wide);">Brushed Gold Accent</span>
+          <button class="btn btn-accent">Review Process</button>
+        </div>
+
+        <div>
+          <span style="display: block; font-size: var(--fs-micro); color: var(--text-muted); margin-bottom: var(--space-xs); text-transform: uppercase; letter-spacing: var(--tracking-wide);">Minimal Link with Dot</span>
+          <button class="btn btn-text">Sourcing Ethics</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: GRID CARDS & IMAGES -->
+    <section class="section-container" id="cards">
+      <div style="margin-bottom: var(--space-xl);">
+        <span style="font-family: var(--font-sans); font-size: var(--fs-micro); letter-spacing: var(--tracking-wider); text-transform: uppercase; color: var(--accent-color);">04 / REUSABLE CARDS & IMAGES</span>
+        <h2 style="font-size: var(--fs-h1); margin-top: var(--space-xs);">Anatomy of Material Curation</h2>
+      </div>
+
+      <div class="blueprint-grid">
+        <!-- Reusable Card Variant -->
+        <div class="card-blueprint" data-id="01" style="grid-column: span 4;">
+          <div>
+            <span style="font-family: var(--font-sans); font-size: var(--fs-micro); letter-spacing: var(--tracking-wider); text-transform: uppercase; color: var(--text-muted);">Sourcing System</span>
+            <h3 style="font-size: var(--fs-h2); margin-top: var(--space-xs); margin-bottom: var(--space-sm);">Calacatta Oro Marble</h3>
+            <p style="font-size: var(--fs-small); margin-bottom: var(--space-md);">
+              Sourced directly from Tuscany and hand-cut by our guild members on-site. Verified for density and structural veins.
+            </p>
+          </div>
+          <button class="btn btn-secondary btn-small" style="align-self: flex-start; padding: var(--space-xs) var(--space-md);">Material Specs</button>
+        </div>
+
+        <!-- Reusable Image Component with 3:4 aspect ratio -->
+        <div style="grid-column: span 4;">
+          <div class="image-container-3-4">
+            <img class="image-reveal" src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=800&q=80" alt="Material Raw Veneer">
+            <div class="image-dimension-tag">REF_PL_3.4 // PLASTER & WALNUT</div>
+          </div>
+          <h4 style="font-size: var(--fs-h3); margin-top: var(--space-sm); font-style: italic;">The Drawing Room Elevation</h4>
+          <p style="font-size: var(--fs-small); color: var(--text-muted);">Asymmetrical balance highlighting the intersection of hand-polished stone and brushed brass.</p>
+        </div>
+
+        <!-- Another 3:4 Image Container -->
+        <div style="grid-column: span 4;">
+          <div class="image-container-3-4">
+            <img class="image-reveal" src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80" alt="Minimalist Stone Join">
+            <div class="image-dimension-tag">REF_ST_3.4 // TRAVERTINE SLAB</div>
+          </div>
+          <h4 style="font-size: var(--fs-h3); margin-top: var(--space-sm); font-style: italic;">Hand-Carved Stone Joints</h4>
+          <p style="font-size: var(--fs-small); color: var(--text-muted);">Macro-detailed visualization of unyielding material density. Proving craftsmanship through tight geometric tolerance.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 6: THE ATELIER COMMISSION LEDGER FORM -->
+    <section class="section-container" id="forms">
+      <div style="margin-bottom: var(--space-xl);">
+        <span style="font-family: var(--font-sans); font-size: var(--fs-micro); letter-spacing: var(--tracking-wider); text-transform: uppercase; color: var(--accent-color);">05 / THE ATELIER COMMISSION LEDGER</span>
+        <h2 style="font-size: var(--fs-h1); margin-top: var(--space-xs);">Bespoke Intake Inquiry</h2>
+      </div>
+
+      <div class="blueprint-grid">
+        <div style="grid-column: span 4; margin-bottom: var(--space-md);">
+          <h3 style="font-size: var(--fs-h2); font-weight: 300; margin-bottom: var(--space-sm);">Commission Initiation</h3>
+          <p style="font-size: var(--fs-small);">
+            We reject standard, fast contact forms. Our ledger represents a formal architectural registration, guaranteeing human review by the Principal Designer.
+          </p>
+        </div>
+
+        <form style="grid-column: span 8;" id="ledgerForm" onsubmit="event.preventDefault(); alert('Commission registered into structural ledger.');">
+          <div class="ledger-form-group">
+            <input type="text" id="clientName" class="ledger-input" placeholder=" " required autocomplete="off">
+            <label for="clientName" class="ledger-label">Your Name</label>
+          </div>
+
+          <div class="ledger-form-group">
+            <select id="projectCommission" class="ledger-select" required>
+              <option value="" disabled selected></option>
+              <option value="spatial">Spatial Architecture & Structural Planning</option>
+              <option value="millwork">Material Sourcing & Custom Millwork</option>
+              <option value="turnkey">The Turnkey Atelier Commission</option>
+            </select>
+            <label for="projectCommission" class="ledger-label">Type of Commission</label>
+          </div>
+
+          <div class="ledger-form-group">
+            <textarea id="projectNotes" class="ledger-textarea" placeholder=" " required></textarea>
+            <label for="projectNotes" class="ledger-label">Project Coordinates / Site Scope Notes</label>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="margin-top: var(--space-md);">Register Commission</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- SECTION 7: RESPONSIVE BREAKPOINT GRID VISUALIZATION -->
+    <section class="section-container" id="grid">
+      <div style="margin-bottom: var(--space-xl);">
+        <span style="font-family: var(--font-sans); font-size: var(--fs-micro); letter-spacing: var(--tracking-wider); text-transform: uppercase; color: var(--accent-color);">06 / GRID & BREAKPOINTS</span>
+        <h2 style="font-size: var(--fs-h1); margin-top: var(--space-xs);">Fluid Structural Columns</h2>
+      </div>
+
+      <p style="margin-bottom: var(--space-lg); font-size: var(--fs-body);">
+        Our layout system uses an asymmetric architectural blueprint. Mobile utilizes a 4-column alignment scale, while Desktop expands cleanly to a wide 12-column template. Below is a living blueprint layout visualization:
+      </p>
+
+      <div class="blueprint-grid" style="row-gap: var(--space-md);">
+        <div style="grid-column: span 1; background-color: var(--panel-bg); height: 48px; border: 0.5px dashed var(--accent-color); display: flex; align-items: center; justify-content: center; font-size: var(--fs-micro);">COL 1</div>
+        <div style="grid-column: span 1; background-color: var(--panel-bg); height: 48px; border: 0.5px dashed var(--accent-color); display: flex; align-items: center; justify-content: center; font-size: var(--fs-micro);">COL 2</div>
+        <div style="grid-column: span 1; background-color: var(--panel-bg); height: 48px; border: 0.5px dashed var(--accent-color); display: flex; align-items: center; justify-content: center; font-size: var(--fs-micro);">COL 3</div>
+        <div style="grid-column: span 1; background-color: var(--panel-bg); height: 48px; border: 0.5px dashed var(--accent-color); display: flex; align-items: center; justify-content: center; font-size: var(--fs-micro);">COL 4</div>
+
+        <!-- Desktop Grid helper columns hidden automatically by the CSS framework inside blueprint-grid on mobile -->
+        <div class="desktop-only-grid-col" style="grid-column: span 1; background-color: var(--panel-bg); height: 48px; border: 0.5px dashed var(--accent-color); display: flex; align-items: center; justify-content: center; font-size: var(--fs-micro);">COL 5</div>
+        <div class="desktop-only-grid-col" style="grid-column: span 1; background-color: var(--panel-bg); height: 48px; border: 0.5px dashed var(--accent-color); display: flex; align-items: center; justify-content: center; font-size: var(--fs-micro);">COL 6</div>
+        <div class="desktop-only-grid-col" style="grid-column: span 1; background-color: var(--panel-bg); height: 48px; border: 0.5px dashed var(--accent-color); display: flex; align-items: center; justify-content: center; font-size: var(--fs-micro);">COL 7</div>
+        <div class="desktop-only-grid-col" style="grid-column: span 1; background-color: var(--panel-bg); height: 48px; border: 0.5px dashed var(--accent-color); display: flex; align-items: center; justify-content: center; font-size: var(--fs-micro);">COL 8</div>
+        <div class="desktop-only-grid-col" style="grid-column: span 1; background-color: var(--panel-bg); height: 48px; border: 0.5px dashed var(--accent-color); display: flex; align-items: center; justify-content: center; font-size: var(--fs-micro);">COL 9</div>
+        <div class="desktop-only-grid-col" style="grid-column: span 1; background-color: var(--panel-bg); height: 48px; border: 0.5px dashed var(--accent-color); display: flex; align-items: center; justify-content: center; font-size: var(--fs-micro);">COL 10</div>
+        <div class="desktop-only-grid-col" style="grid-column: span 1; background-color: var(--panel-bg); height: 48px; border: 0.5px dashed var(--accent-color); display: flex; align-items: center; justify-content: center; font-size: var(--fs-micro);">COL 11</div>
+        <div class="desktop-only-grid-col" style="grid-column: span 1; background-color: var(--panel-bg); height: 48px; border: 0.5px dashed var(--accent-color); display: flex; align-items: center; justify-content: center; font-size: var(--fs-micro);">COL 12</div>
+      </div>
+
+      <!-- Tiny style hack for this demo to hide desktop-only-grid-col under 768px -->
+      <style>
+        @media (max-width: 767px) {
+          .desktop-only-grid-col {
+            display: none !important;
+          }
+        }
+      </style>
+    </section>
+
+  </main>
+
+  <!-- --- ATELIER FOOTER COMPONENT --- -->
+  <footer class="atelier-footer">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <h4>PTL ATELIER VENTURES</h4>
+        <p>
+          World-class interior architecture & custom material commissioning based in Port Harcourt, Nigeria. Committed to Integrity, Premium Sourcing, and Unyielding Craft.
+        </p>
+      </div>
+
+      <div>
+        <h5 class="footer-column-title">COMMISSIONS</h5>
+        <ul class="footer-links">
+          <li><a href="#about">The Atelier</a></li>
+          <li><a href="#materials">Material Library</a></li>
+          <li><a href="#portfolio">Finished Works</a></li>
+          <li><a href="#process">The 142-Point Audit</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h5 class="footer-column-title">ATELIER COORDINATES</h5>
+        <ul class="footer-links" style="font-family: var(--font-sans); font-size: var(--fs-small); color: #A3B3C8; line-height: 1.8;">
+          <li>4.8156° N, 7.0498° E</li>
+          <li>Phase II, GRA Estate</li>
+          <li>Port Harcourt, Nigeria</li>
+          <li><a href="mailto:commissions@ptlatelier.com" style="color: var(--color-gold-brushed); text-decoration: underline;">commissions@ptlatelier.com</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-copy">
+        &copy; 2025 PTL ATELIER VENTURES. HANDCRAFTED IN NIGERIA. ALL CREATIVE RIGHTS RESERVED.
+      </div>
+      <div style="font-family: var(--font-sans); font-size: var(--fs-micro); color: rgba(255, 255, 255, 0.4); text-transform: uppercase; letter-spacing: var(--tracking-wide);">
+        DESIGN BY LUMINA FORGE
+      </div>
+    </div>
+  </footer>
+
+  <!-- Theme Toggle Floating Button -->
+  <div class="theme-toggle-fixed" id="themeToggle" title="Toggle Blueprint Theme">
+    <!-- Beautiful minimal sun/moon glyph representation using unicode characters -->
+    <span id="themeIcon" style="font-size: 20px;">◑</span>
+  </div>
+
+  <script src="js/design-system.js"></script>
+</body>
+</html>
