@@ -814,3 +814,207 @@ button, input, select, textarea {
   width: 100%;
   border: 0.5px solid var(--border-color);
 }
+
+
+/* =========================================================
+   HERO SPACE COMPONENT & LANDING OVERRIDES
+   ========================================================= */
+.hero-space {
+  position: relative;
+  min-height: 95vh;
+  display: flex;
+  align-items: flex-end;
+  padding-bottom: var(--space-huge);
+  background: linear-gradient(180deg, rgba(11, 27, 45, 0.4) 0%, rgba(11, 27, 45, 0.85) 100%),
+              url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1800&q=90') no-repeat center center;
+  background-size: cover;
+  color: var(--color-pure-white);
+}
+
+[data-theme="dark"] .hero-space {
+  background: linear-gradient(180deg, rgba(7, 19, 33, 0.5) 0%, rgba(7, 19, 33, 0.95) 100%),
+              url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1800&q=90') no-repeat center center;
+  background-size: cover;
+}
+
+.hero-content {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-md);
+  z-index: 2;
+}
+
+@media (min-width: 768px) {
+  .hero-content {
+    padding: 0 var(--space-xl);
+  }
+}
+
+.trust-intro-card {
+  border-left: 1px solid var(--accent-color);
+  padding-left: var(--space-lg);
+  margin-top: var(--space-md);
+}
+
+.services-nav-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.services-nav-item {
+  border-bottom: 0.5px solid var(--border-color);
+  padding-bottom: var(--space-md);
+  cursor: pointer;
+  transition: border-color var(--transition-fast);
+}
+
+.services-nav-item:hover {
+  border-bottom-color: var(--accent-color);
+}
+
+.step-number {
+  font-family: var(--font-sans);
+  font-size: var(--fs-micro);
+  letter-spacing: var(--tracking-wider);
+  color: var(--accent-color);
+  font-weight: 600;
+  display: block;
+  margin-bottom: var(--space-xs);
+}
+
+.testimonial-quote {
+  font-family: var(--font-serif);
+  font-size: var(--fs-h2);
+  font-style: italic;
+  line-height: var(--lh-heading);
+  margin-bottom: var(--space-md);
+  position: relative;
+}
+
+.testimonial-quote::before {
+  content: "“";
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  font-size: 5rem;
+  color: var(--border-color);
+  font-family: var(--font-serif);
+  opacity: 0.3;
+}
+
+.scroller-indicator {
+  position: absolute;
+  bottom: var(--space-lg);
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-sans);
+  font-size: var(--fs-micro);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  opacity: 0.8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.scroller-indicator::after {
+  content: "";
+  width: 1px;
+  height: 30px;
+  background-color: var(--color-gold-brushed);
+  display: block;
+  animation: scrollerLine 2s infinite var(--ease-atelier);
+}
+
+@keyframes scrollerLine {
+  0% { transform: scaleY(0); transform-origin: top; }
+  50% { transform: scaleY(1); transform-origin: top; }
+  51% { transform: scaleY(1); transform-origin: bottom; }
+  100% { transform: scaleY(0); transform-origin: bottom; }
+}
+
+
+/* =========================================================
+   TABLET RESPONSIVENESS AND BLUEPRINT-GRID POLISHING
+   ========================================================= */
+@media (min-width: 576px) and (max-width: 1024px) {
+  /* 1. Hero Content */
+  #atelier .blueprint-grid > div {
+    grid-column: span 12 !important;
+  }
+
+  /* 2. Foundation Principles */
+  #principles .blueprint-grid > div:first-child {
+    grid-column: span 12 !important;
+  }
+  #principles .blueprint-grid > div:nth-child(2) {
+    grid-column: span 12 !important;
+  }
+  #principles .trust-intro-card {
+    grid-column: span 6 !important;
+  }
+
+  /* 3. Core Disciplines / Services */
+  #services .blueprint-grid > div:first-child {
+    grid-column: span 12 !important;
+    margin-bottom: var(--space-lg) !important;
+  }
+  #services .blueprint-grid > div:nth-child(2) {
+    grid-column: span 12 !important;
+  }
+
+  /* 4. Why PTL Section */
+  #why-ptl .blueprint-grid > div:first-child {
+    grid-column: span 12 !important;
+  }
+  #why-ptl .blueprint-grid > div:nth-child(2) {
+    grid-column: span 12 !important;
+  }
+  #why-ptl .blueprint-grid > div:nth-child(2) .blueprint-grid > div {
+    grid-column: span 6 !important;
+  }
+
+  /* 5. Selected Works / Portfolio */
+  #portfolio .blueprint-grid > div:nth-child(1) {
+    grid-column: span 6 !important;
+  }
+  #portfolio .blueprint-grid > div:nth-child(2) {
+    grid-column: span 6 !important;
+  }
+  #portfolio .blueprint-grid > div:nth-child(3) {
+    grid-column: span 12 !important;
+    margin-top: var(--space-md);
+  }
+
+  /* 6. Process Workflow */
+  #process .blueprint-grid > div:first-child {
+    grid-column: span 12 !important;
+  }
+  #process .blueprint-grid > div:nth-child(2) {
+    grid-column: span 12 !important;
+  }
+  #process .blueprint-grid > div:nth-child(2) .blueprint-grid > div {
+    grid-column: span 6 !important;
+  }
+
+  /* 7. Testimonials Quotes */
+  #testimonials .blueprint-grid > div {
+    grid-column: span 12 !important;
+    margin-bottom: var(--space-lg);
+  }
+  #testimonials .blueprint-grid > div:last-child {
+    margin-bottom: 0;
+  }
+
+  /* 8. Commission Ledger Form */
+  #commission .blueprint-grid > div:first-child {
+    grid-column: span 12 !important;
+  }
+  #commission #ledgerForm {
+    grid-column: span 12 !important;
+  }
+}
