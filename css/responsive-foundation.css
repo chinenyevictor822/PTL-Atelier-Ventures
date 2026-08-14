@@ -1,0 +1,130 @@
+/*
+  PTL Atelier Ventures — Responsive Foundation
+  Step 1: mobile-first structural repair
+
+  This layer intentionally preserves the existing visual system while
+  preventing grid content from overflowing or overlapping on small screens.
+*/
+
+/* Defensive grid sizing: flexible tracks must be allowed to shrink. */
+.blueprint-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.blueprint-grid > * {
+  min-width: 0;
+  min-height: 0;
+}
+
+/* The existing HTML uses desktop-oriented inline grid spans.
+   On phones, every architectural block becomes a single readable column. */
+@media (max-width: 767px) {
+  .blueprint-grid > [style*="grid-column"] {
+    grid-column: 1 / -1 !important;
+  }
+
+  .blueprint-grid {
+    gap: var(--space-lg);
+  }
+
+  .section-container {
+    padding-inline: var(--space-md);
+  }
+
+  .hero-content {
+    padding-inline: var(--space-md);
+  }
+
+  .hero-space {
+    min-height: max(620px, 92svh);
+    padding-bottom: var(--space-xxl);
+  }
+
+  .hero-space h1 {
+    max-width: 100%;
+    overflow-wrap: break-word;
+  }
+
+  .hero-space .btn {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .hero-space .blueprint-grid > div > div:last-child {
+    width: 100%;
+  }
+
+  .trust-intro-card {
+    padding-left: var(--space-md);
+  }
+
+  .services-nav-item .blueprint-grid {
+    gap: var(--space-sm);
+  }
+
+  .services-nav-item h3,
+  .testimonial-quote,
+  h1, h2, h3, h4, h5, h6 {
+    overflow-wrap: break-word;
+  }
+
+  .ledger-form-group {
+    min-width: 0;
+  }
+
+  .ledger-label {
+    max-width: 100%;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .theme-toggle-fixed {
+    width: 44px;
+    height: 44px;
+    right: max(16px, env(safe-area-inset-right));
+    bottom: max(16px, env(safe-area-inset-bottom));
+  }
+}
+
+/* Very narrow phones: give long headings and controls additional breathing room. */
+@media (max-width: 359px) {
+  .quiet-header {
+    padding-inline: 12px;
+  }
+
+  .quiet-logo {
+    font-size: 0.68rem;
+    letter-spacing: 0.16em;
+  }
+
+  .quiet-menu-btn {
+    font-size: 0.9rem;
+  }
+
+  .section-container {
+    padding-inline: 12px;
+  }
+
+  .hero-content {
+    padding-inline: 12px;
+  }
+
+  .btn {
+    padding-inline: var(--space-lg);
+  }
+}
+
+/* Respect user motion preferences while retaining the layout. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
