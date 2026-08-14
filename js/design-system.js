@@ -1,10 +1,24 @@
 /*
 ================================================================================
-  L U M I N A   F O R G E   -   D E S I G N   F O U N D A T I O N
+  L U M I N A   F O R G E   -  D E S I G N   F O U N D A T I O N
   Client: PTL Atelier Ventures
   Interaction Script: Custom Blueprint Mechanics, Momentum Feeds, & Theme Controllers
 ================================================================================
 */
+
+// Load the responsive foundation before interaction initialization.
+// Keeping this in a dedicated stylesheet preserves the existing design system
+// while allowing the current HTML's desktop-oriented inline grid spans to be
+// safely overridden on mobile.
+(() => {
+  const href = 'css/responsive-foundation.css';
+  if (!document.querySelector(`link[href="${href}"]`)) {
+    const stylesheet = document.createElement('link');
+    stylesheet.rel = 'stylesheet';
+    stylesheet.href = href;
+    document.head.appendChild(stylesheet);
+  }
+})();
 
 document.addEventListener('DOMContentLoaded', () => {
 
